@@ -138,7 +138,7 @@ hello-world/
 ### Running the Example
 
 ```bash
-cd hello-world
+cd examples/hello-world
 
 ## Python venv
 python3 -m venv .venv
