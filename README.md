@@ -83,14 +83,42 @@ npm install -g xpander-cli
 
 ## 🚀 Quick Start
 
-### Connect to an Agent
+### Simple example with any LLM provider:
 
 ```python
-from xpander_sdk import XpanderClient
+from xpander_sdk import XpanderClient, Agent
 
-# Initialize and call your agent
-agent = XpanderClient("XPANDER_API_KEY").agents.get("AGENT_ID")
-result = agent.run("What can you do for me?")
+# Init
+xpander_client = XpanderClient(api_key="YOUR_XPANDER_API_KEY")  # Get your API key via `xpander login`
+xpander_agent : Agent = xpander_client.agents.get(agent_id="YOUR_AGENT_ID")  # Get your agent ID via `xpander agent new`
+
+# Initializing a new task creates a new conversation thread with empty state (messages object is empty)
+xpander_agent.add_task("What can you do?")
+
+# Run the agent loop
+while not xpander_agent.is_finished:
+
+    # Get LLM response with tools
+    response = your_llm_provider.chat.completions.create(
+        messages=xpander_agent.messages,  # Auto-translated to match the agent's state
+        tools=xpander_agent.get_tools(),  # Auto-translated to match the agent's state
+        tool_choice=xpander_agent.tool_choice 
+    )
+    
+    # Execute tools automatically (agent stops when LLM calls the "finished" tool)
+    xpander_agent.run_tools(xpander_agent.extract_tool_calls(response))
+
+    # Optional: Manually stop agent execution
+    # xpander_agent.stop_execution(is_success=True, result="Your result here")
+
+# Get results
+result = xpander_agent.retrieve_execution_result()
+print(f"Answer: {result.result}")
+
+# Continue the same conversation later with:
+# agent.add_task("Follow-up question", thread_id=result.memory_thread_id)
+
+# Or create a new conversation with add_task()
 ```
 
 ### Create Event-Driven Agents
@@ -131,7 +159,7 @@ xpander_agent.send_result(response)
 
 ## 🧩 Hello World Example
 
-The `hello-world` directory contains a simple agent implementation to demonstrate core concepts:
+The `Getting-Started/hello-world` directory contains a simple agent implementation to demonstrate core concepts:
 
 ```
 hello-world/
@@ -152,6 +180,7 @@ hello-world/
 ### Running the Example
 
 ```bash
+# Navigate to the hello-world example
 cd Getting-Started/hello-world
 
 ## Python venv
