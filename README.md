@@ -1,10 +1,10 @@
 <h3 align="center">
   <a name="readme-top"></a>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/Purple Logo White text.png">
+    <source media="(prefers-color-scheme: dark)" srcset="images/Purple%20Logo%20White%20text.png">
     <img
-      src="images/Purple Logo Black Text.png"
-      height="170"
+      src="images/Purple%20Logo%20Black%20Text.png"
+      style="max-width: 100%; height: auto; width: auto; max-height: 170px;"
       alt="xpander.ai Logo"
     >
   </picture>
