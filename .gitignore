@@ -10,3 +10,4 @@ xpander_config.json
 agent_instructions.json
 __pycache_
 .env
+.DS_Store
