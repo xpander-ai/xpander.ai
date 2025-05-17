@@ -7,7 +7,7 @@
   >
 </h3>
 
-# **xpander.ai – Open-Source Multi-Framework Runtime for Autonomous AI Agents**
+# **xpander.ai – Multi-Framework Runtime for AI Agents**
 
 <div align="center">
   <a href="https://github.com/xpanderai/xpander/blob/main/LICENSE">
@@ -40,57 +40,9 @@
 
 ---
 
-🚀 xpander.ai
+xpander.ai is an open-source runtime infrastructure that lets you build, deploy, and scale AI agents as production-ready backend services. Use any AI framework (LangChain, Semantic Kernel, HuggingFace, etc.), connect to any LLM, and leverage built-in observability.
 
-Open-source, multi-framework runtime infrastructure for building, deploying, and scaling autonomous AI Agents.  
-Bring your own AI frameworks, plug into any LLM, and deploy agents as real backend apps.
-
-xpander.ai is the backbone for next-generation AI agent applications.  
-The open-source runtime is your foundation; the hosted xpander.ai platform unlocks enterprise scale, security, and observability.
-
----
-
-## 🌟 Why xpander?
-- **Framework Agnostic:** LangChain, Semantic Kernel, Hugging Face, CrewAI, your custom agent — all work out of the box.
-- **Production-Grade Runtime:** Agents run like backend services. Managed scheduling, memory, versioning, and multi-agent orchestration.
-- **Build Faster, Safer:** Drop in tool libraries, generate new tools from any API, and control everything from a beautiful agent workbench or CI.
-- **Observability Built-in:** Trace every thought, tool call, handoff, and model decision.
-
----
-
-## ⚡ Quick Start
-
-
-# Create new agents with xpander CLI
-
-```
-npm install -g xpander-cli
-xpander login
-xpander agent new
-```
-
-# Steam events from managed HMIs, add tools, and define complex multi-step multi-agent rules
-
-```python xpander_handler.py
-from xpander_utils.events import XpanderEventListener, AgentExecution, AgentExecutionResult ## pip install xpander_utils
-
-async def on_execution_request(execution_task: AgentExecution) -> AgentExecutionResult:
-    """
-    Handles an execution request arriving via XpanderEventListener.
-    Must be async‑def so the listener can await it without blocking.
-    """
-
-    your_agent = YourAnyFrameworkAgent()
-
-    your_agent.invoke(execution_task.input)
-
-    return AgentExecutionResult(result=error, is_success=False)
-
-listener = XpanderEventListener(**xpander_cfg)
-listener.register(on_execution_request=on_execution_request)
-```
-
-### Step 1: Install SDK
+## 📦 Installation
 
 ```bash
 # Python
@@ -98,40 +50,100 @@ pip install xpander-sdk
 
 # Node.js
 npm install @xpander-ai/sdk
+
+# CLI (for agent creation)
+npm install -g xpander-cli
 ```
 
-### Step 2: Connect to Your Agent
+## 🚀 Quick Start
+
+### Connect to an Agent
 
 ```python
 from xpander_sdk import XpanderClient
 
+# Initialize and call your agent
 agent = XpanderClient("XPANDER_API_KEY").agents.get("AGENT_ID")
-print(agent.run("What's up, xpander? 🚀"))
+result = agent.run("What can you do for me?")
 ```
 
-### Integrate with Popular Frameworks
+### Create Event-Driven Agents
 
-```python LlamaIndex
+```python
+from xpander_utils.events import XpanderEventListener, AgentExecution, AgentExecutionResult
+
+async def on_execution_request(execution_task: AgentExecution) -> AgentExecutionResult:
+    # Your agent logic here
+    your_agent = YourAnyFrameworkAgent()
+    result = your_agent.invoke(execution_task.input)
+    return AgentExecutionResult(result=result, is_success=True)
+
+# Register event handler
+listener = XpanderEventListener(**xpander_cfg)
+listener.register(on_execution_request=on_execution_request)
+```
+
+### Framework Integration Examples
+
+#### LlamaIndex
+
+```python
 from llama_index.agent import OpenAIAgent
 from llama_index.llms import OpenAI
 
-query = "Hello, world! You are AI Agent with State managed by xpander.ai. You are now have access to more tools, authenticate users, and preserve state, return to tasks later"
-
-# Initialize LlamaIndex agent with xpander tools and memory
+# Initialize with xpander tools and memory
 agent = OpenAIAgent.from_tools(
-    tools=xpander_agent.get_tools("llamaindex")
+    tools=xpander_agent.get_tools("llamaindex"),
     llm=OpenAI(model=xpander.get_model()),
     memory=xpander_agent.get_memory(agent.to_dict()),
     verbose=True
 )
 
-# Run the query and send results
-response = agent.chat(query)
+response = agent.chat("Your query here")
 xpander_agent.send_result(response)
 ```
----
 
-## 🧩 Example Agents
+## 🧩 Hello World Example
+
+The `hello-world` directory contains a minimalist agent implementation to demonstrate core concepts:
+
+```
+hello-world/
+├── app.py                    # CLI entry point
+├── my_agent.py               # Agent implementation
+├── xpander_handler.py        # Event handler
+├── tools/
+│   └── local_tools.py        # Custom tools
+└── agent_instructions.json   # Agent configuration
+```
+
+### Running the Example
+
+```bash
+cd hello-world
+pip install -r requirements.txt
+python app.py                 # For CLI mode
+# OR
+python xpander_handler.py     # For event-driven mode
+```
+
+### Switching LLM Providers
+
+```python
+# In my_agent.py
+llm_provider = LLMProvider.ANTHROPIC  # Or other supported providers
+
+# During initialization
+self.agent.select_llm_provider(llm_provider)
+
+# Initialize provider client
+if llm_provider == LLMProvider.OPEN_AI:
+    self.model_endpoint = AsyncOpenAIProvider()
+elif llm_provider == LLMProvider.ANTHROPIC:
+    self.model_endpoint = AsyncAnthropicProvider()
+```
+
+## 📋 Framework Support
 
 | Framework      | Example                     | Link                                                                 |
 |----------------|-----------------------------|----------------------------------------------------------------------|
@@ -139,69 +151,23 @@ xpander_agent.send_result(response)
 | HuggingFace    | Image-to-text pipeline agent | [Python Example](https://github.com/xpanderai/xpander/tree/main/examples/huggingface_image_to_text.py) |
 | Semantic Kernel| Calendar + Email orchestrator| [C# Example](https://github.com/xpanderai/xpander/tree/main/examples/semantic_kernel_calendar_email.cs) |
 
----
-
-## 🚀 Hello World Agent
-
-The xpander.ai repository includes a simple "Hello World" agent to help you get started with the framework. This example demonstrates core xpander.ai concepts and serves as a starting point for building your own agents.
-
-### Features
-
-- **Simple agent architecture**: Demonstrates an async agent loop pattern with the xpander SDK
-- **Local tools integration**: Includes file reading and URL download capabilities
-- **Multi-modal capabilities**: Can generate and display images in chat using markdown format
-- **Two execution modes**:
-  - Direct chat through command line interface (`app.py`)
-  - Event-driven through xpander event listener (`xpander_handler.py`)
-
-### Getting Started
-
-1. Navigate to the `hello-world` directory
-2. Install dependencies: `pip install -r requirements.txt`
-3. Configure your agent by editing `xpander_config.json` with your API key and agent ID
-4. Run the agent in interactive mode: `python app.py`
-5. Alternatively, run the event listener mode: `python xpander_handler.py`
-
-### Structure
-
-- `app.py`: Entry point for interactive CLI mode
-- `my_agent.py`: Core agent implementation using xpander SDK
-- `xpander_handler.py`: Event-driven execution handler
-- `tools/local_tools.py`: Definition of local tool functions
-- `agent_instructions.json`: Configuration for agent personality and behavior
-
----
-
 ## 🏗️ Core Features
 
-### For AI Agent Developers
-- Managed AI Agent Runtime: Deploy and run agents as real backends (think Railway/Render, but for agents).
-- Agentic Tooling: Massive tool library + instant tool generation from any OpenAPI spec.
-- Multi-Agent Orchestration (A2A): Chain agents, handle handoffs, and orchestrate cross-runtime logic.
-- Agent State & Memory: Built-in state machine, message history, and persistent memory.
-- AI Agent Workbench: Visualize tool dependency graphs, debug payloads, run side-by-side model comparisons, and iterate fast.
-- Optimized Tool Caller: Cut latency and LLM/API cost with a smarter, parallelized tool engine.
-- Universal Triggers: Trigger agents via MCP, API, A2A, webhooks, or UI.
-- Integrations to Human Interfaces: Slack, Teams, ChatGPT-like UI, scheduled workflows, and more.
-- Observability/Trace: Step-by-step, end-to-end analysis of execution, model decisions, API requests, and tool results.
-- Bring Your Own Keys: Use your own LLM API keys (OpenAI, Anthropic, Mistral, etc.), or secure vault keys via xpander.
-- Agent Lifecycle Management: Versioning, staging, production rollouts, and A/B testing built in.
+### Development Features
+- **Framework Agnostic**: Support for LangChain, Semantic Kernel, HuggingFace, CrewAI, and custom agents
+- **Tool Management**: Drop-in tool libraries and auto-generation from OpenAPI specs
+- **LLM Flexibility**: Connect to any LLM (OpenAI, Anthropic, Mistral, etc.)
+- **State & Memory**: Built-in state machine, message history, and persistent memory
+- **Multi-Agent Orchestration**: Chain agents, handle handoffs, and manage cross-runtime logic
 
-### For Platform Owners
-- Single Pane of Glass: Manage all agents org-wide with one dashboard.
-- Enterprise Auth: OIDC/SAML support, RBAC, and audit trails.
-- Scaffolded Templates: Quickly configure agents using framework-agnostic templates.
-- A/B Testing: Compare frameworks, LLM vendors, or agent strategies in production.
-- Agent Hub: Self-hosted or managed, with full discovery and internal sharing.
-- LLM Gateway: Centralize LLM access, model switching, and fine-grained API controls.
-- Compute Environment Management: Launch agents in your own VPC or on xpander-managed cloud.
-- Observability Data Export: Ship logs to your SIEM or central logging.
-- SLA Management: Treat agents like production services with clear SLOs and guarantees.
-- Controlled Tool Gateway: API/network-level guardrails and approval workflows.
+### Infrastructure Features
+- **Runtime Environment**: Deploy agents as real backend services
+- **Observability**: Trace every step of execution, model decisions, and tool calls
+- **Multiple Triggers**: API, webhooks, UI, or inter-agent communication
+- **UI Integrations**: Slack, Teams, web interfaces, and more
+- **Versioning & Lifecycle**: Staging, production rollouts, and A/B testing
 
----
-
-## 🌐 Ecosystem
+## 🌐 Open Source vs Hosted Platform
 
 | Feature                | Open-Source Runtime | Hosted Platform         |
 |------------------------|---------------------|------------------------|
@@ -213,39 +179,20 @@ The xpander.ai repository includes a simple "Hello World" agent to help you get 
 | Auth/SLA/RBAC          | ❌                  | ✅                     |
 | Enterprise Support     | ❌                  | ✅                     |
 
----
+## 📚 Documentation & Resources
 
-## 📚 Documentation
-
-- [Docs](https://docs.xpander.ai)  
+- [Documentation](https://docs.xpander.ai)  
 - [API Reference](https://docs.xpander.ai/api)  
-- [Agent Framework Examples](https://github.com/xpanderai/xpander/tree/main/examples)  
-- [Community](https://discord.gg/xpanderai)  
-
----
-
-## 🤝 Contribute
-
-We welcome contributions!  
-Read our contributing guide and join the community.
-
----
+- [Example Library](https://github.com/xpanderai/xpander/tree/main/examples)  
+- [Discord Community](https://discord.gg/xpanderai)  
 
 ## ⚖️ License
 
-AGPL-3.0 for the open-source runtime.  
-Hosted platform is commercial with free tier available.
+- Open-source runtime: AGPL-3.0
+- Hosted platform: Commercial (free tier available)
 
----
-
-<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
-    <a href="#readme-top" style="text-decoration: none; color: #007bff; font-weight: bold;">
+<p align="right">
+    <a href="#readme-top">
         ↑ Back to Top ↑
     </a>
 </p>
-
----
-
-xpander.ai — The backend for serious AI Agent developers.
-
-> No vendor lock-in. No black boxes. Build, scale, and own your agent-powered future.
