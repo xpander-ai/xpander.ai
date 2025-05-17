@@ -60,6 +60,36 @@ The open-source runtime is your foundation; the hosted xpander.ai platform unloc
 
 ## ⚡ Quick Start
 
+
+# Create new agents with xpander CLI
+
+```
+npm install -g xpander-cli
+xpander login
+xpander agent new
+```
+
+# Steam events from managed HMIs, add tools, and define complex multi-step multi-agent rules
+
+```python xpander_handler.py
+from xpander_utils.events import XpanderEventListener, AgentExecution, AgentExecutionResult ## pip install xpander_utils
+
+async def on_execution_request(execution_task: AgentExecution) -> AgentExecutionResult:
+    """
+    Handles an execution request arriving via XpanderEventListener.
+    Must be async‑def so the listener can await it without blocking.
+    """
+
+    your_agent = YourAnyFrameworkAgent()
+
+    your_agent.invoke(execution_task.input)
+
+    return AgentExecutionResult(result=error, is_success=False)
+
+listener = XpanderEventListener(**xpander_cfg)
+listener.register(on_execution_request=on_execution_request)
+```
+
 ### Step 1: Install SDK
 
 ```bash
@@ -75,26 +105,30 @@ npm install @xpander-ai/sdk
 ```python
 from xpander_sdk import XpanderClient
 
-xp = XpanderClient(api_key="YOUR_XPANDER_API_KEY")
-agent = xp.agents.get("AGENT_ID")
-
-response = agent.run("What's the latest revenue report?")
-print(response)
+agent = XpanderClient("XPANDER_API_KEY").agents.get("AGENT_ID")
+print(agent.run("What's up, xpander? 🚀"))
 ```
 
-### Step 3: Run an Agent with Any Framework
+### Integrate with Popular Frameworks
 
-```python
-# Example: Integrate LangChain, Semantic Kernel, or your own logic
-from langchain.agents import initialize_agent
+```python LlamaIndex
+from llama_index.agent import OpenAIAgent
+from llama_index.llms import OpenAI
 
-xp_tools = agent.get_tools()
-lc_agent = initialize_agent(tools=xp_tools, llm=...)
+query = "Hello, world! You are AI Agent with State managed by xpander.ai. You are now have access to more tools, authenticate users, and preserve state, return to tasks later"
 
-# Or use stateful orchestration across frameworks
-agent.orchestrate_with([lc_agent, other_agent])
+# Initialize LlamaIndex agent with xpander tools and memory
+agent = OpenAIAgent.from_tools(
+    tools=xpander_agent.get_tools("llamaindex")
+    llm=OpenAI(model=xpander.get_model()),
+    memory=xpander_agent.get_memory(agent.to_dict()),
+    verbose=True
+)
+
+# Run the query and send results
+response = agent.chat(query)
+xpander_agent.send_result(response)
 ```
-
 ---
 
 ## 🧩 Example Agents
@@ -104,6 +138,37 @@ agent.orchestrate_with([lc_agent, other_agent])
 | LangChain      | Customer support chatbot     | [Python Example](https://github.com/xpanderai/xpander/tree/main/examples/langchain_customer_support.py) |
 | HuggingFace    | Image-to-text pipeline agent | [Python Example](https://github.com/xpanderai/xpander/tree/main/examples/huggingface_image_to_text.py) |
 | Semantic Kernel| Calendar + Email orchestrator| [C# Example](https://github.com/xpanderai/xpander/tree/main/examples/semantic_kernel_calendar_email.cs) |
+
+---
+
+## 🚀 Hello World Agent
+
+The xpander.ai repository includes a simple "Hello World" agent to help you get started with the framework. This example demonstrates core xpander.ai concepts and serves as a starting point for building your own agents.
+
+### Features
+
+- **Simple agent architecture**: Demonstrates an async agent loop pattern with the xpander SDK
+- **Local tools integration**: Includes file reading and URL download capabilities
+- **Multi-modal capabilities**: Can generate and display images in chat using markdown format
+- **Two execution modes**:
+  - Direct chat through command line interface (`app.py`)
+  - Event-driven through xpander event listener (`xpander_handler.py`)
+
+### Getting Started
+
+1. Navigate to the `hello-world` directory
+2. Install dependencies: `pip install -r requirements.txt`
+3. Configure your agent by editing `xpander_config.json` with your API key and agent ID
+4. Run the agent in interactive mode: `python app.py`
+5. Alternatively, run the event listener mode: `python xpander_handler.py`
+
+### Structure
+
+- `app.py`: Entry point for interactive CLI mode
+- `my_agent.py`: Core agent implementation using xpander SDK
+- `xpander_handler.py`: Event-driven execution handler
+- `tools/local_tools.py`: Definition of local tool functions
+- `agent_instructions.json`: Configuration for agent personality and behavior
 
 ---
 

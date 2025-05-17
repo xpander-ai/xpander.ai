@@ -1,0 +1,12 @@
+.dockerignore
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+venv/
+__pycache__/
+xpander_config.json
+agent_instructions.json
+__pycache_
+.env
