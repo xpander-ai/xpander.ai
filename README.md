@@ -152,7 +152,7 @@ hello-world/
 ### Running the Example
 
 ```bash
-cd examples/hello-world
+cd Getting-Started/hello-world
 
 ## Python venv
 python3 -m venv .venv
