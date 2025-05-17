@@ -50,7 +50,7 @@ xpander.ai is a backend-as-a-service platform designed specifically for AI agent
 - **Scalable Hosting**: Deploy and scale your agents effortlessly on our managed infrastructure
 - **State Management**: Opt for framework-specific local state or leverage our distributed state management system
 - **Real-time Events**: Harness our event streaming capabilities for Slackbots, ChatUIs, Agent2Agent communication, and Webhook integrations
-- **API Guardrials**: Implement robust guardrails using our Agent-Graph-System to define and manage dependencies between API actions of tool-use
+- **API Guardrails**: Implement robust guardrails using our Agent-Graph-System to define and manage dependencies between API actions of tool-use
 
 By abstracting away infrastructure complexity, xpander.ai empowers you to focus on what matters most: building intelligent, effective AI agents.
 
@@ -117,26 +117,49 @@ xpander_agent.send_result(response)
 
 ## 🧩 Hello World Example
 
-The `hello-world` directory contains a minimalist agent implementation to demonstrate core concepts:
+The `hello-world` directory contains a simple agent implementation to demonstrate core concepts:
 
 ```
 hello-world/
-├── app.py                    # CLI entry point
-├── my_agent.py               # Agent implementation
-├── xpander_handler.py        # Event handler
-├── tools/
-│   └── local_tools.py        # Custom tools
-└── agent_instructions.json   # Agent configuration
+├── app.py                      # CLI entry point for the agent with local thread
+├── my_agent.py                 # Agent implementation (Your agent code goes here)
+├── xpander_handler.py          # Event handler for incoming events from the platform
+├── Dockerfile                  # For containerized deployment
+├── providers/
+│   ├── ai_frameworks/          # Framework integrations
+│   └── llms/                   # LLM provider implementations
+│       ├── openai/             # OpenAI specific implementation
+│       └── ...
+└── tools/
+    ├── local_tools.py          # Custom tools implementation
+    └── async_function_caller.py # Async function caller utility
 ```
 
 ### Running the Example
 
 ```bash
 cd hello-world
+
+## Python venv
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
-python app.py                 # For CLI mode
+
+## Agent creation
+xpander login
+xpander agent new
+
+## Run the agent locally
+python app.py                   # For CLI mode
 # OR
-python xpander_handler.py     # For event-driven mode
+python xpander_handler.py       # For event-driven mode
+```
+
+### Deploy to the Cloud
+
+```bash
+xpander deploy  # Will deploy the Docker container to the cloud and run it via the xpander_handler.py file
+xpander logs    # Will stream logs locally from the agent configured locally
 ```
 
 ### Switching LLM Providers
@@ -146,7 +169,7 @@ python xpander_handler.py     # For event-driven mode
 llm_provider = LLMProvider.ANTHROPIC  # Or other supported providers
 
 # During initialization
-self.agent.select_llm_provider(llm_provider)  # This will convert the messages and tools object to the specific LLM format
+self.agent.select_llm_provider(llm_provider)  # This will convert the messages and tools objects to the specific LLM format
 
 self.model_endpoint = AsyncAnthropicProvider()  # Add the actual implementation of the model invoke
 ```
