@@ -13,18 +13,7 @@
 # **xpander.ai – Backend-as-a-Service for AI Agents**
 
 <div align="center">
-  <a href="https://github.com/xpander-ai/xpander.ai/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/xpander-ai/xpander.ai" alt="License">
-  </a>
-  <a href="https://pypi.org/project/xpander-sdk">
-    <img src="https://img.shields.io/pypi/v/xpander-sdk" alt="PyPI Version">
-  </a>
-  <a href="https://npmjs.com/package/xpander-sdk">
-    <img src="https://img.shields.io/npm/v/xpander-sdk" alt="NPM Version">
-  </a>
-  <a href="https://app.xpander.ai">
-    <img src="https://img.shields.io/badge/Visit-xpander.ai-30a46c" alt="Platform Login">
-  </a>
+  <a href="https://github.com/xpander-ai/xpander.ai/blob/main/LICENSE"><img src="https://img.shields.io/github/license/xpander-ai/xpander.ai" alt="License"></a><a href="https://pypi.org/project/xpander-sdk"><img src="https://img.shields.io/pypi/v/xpander-sdk" alt="PyPI Version"></a><a href="https://npmjs.com/package/xpander-sdk"><img src="https://img.shields.io/npm/v/xpander-sdk" alt="NPM Version"></a><a href="https://app.xpander.ai"><img src="https://img.shields.io/badge/Visit-xpander.ai-30a46c" alt="Platform Login"></a>
 </div>
 
 <div align="center">
