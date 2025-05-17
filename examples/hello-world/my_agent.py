@@ -26,11 +26,9 @@ llm_provider = LLMProvider.OPEN_AI
 
 class MyAgent:
     """
-    Async CodingAgent implementation for xpander.ai.
+    A framework agnostic agent implementation leveraging xpander.ai's backend-as-a-service infrastructure.
 
-    Coordinates LLM interaction, manages reasoning steps, and executes both
-    local and cloud tools asynchronously. Enforces safety constraints and
-    token usage tracking.
+    Handles asynchronous LLM interactions, orchestrates multi-step reasoning, and seamlessly integrates both local and cloud-based tools.
 
     Args:
         agent (Agent): The xpander.ai Agent instance to operate.
