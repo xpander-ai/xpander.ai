@@ -35,6 +35,39 @@ xpander.ai is a backend-as-a-service platform designed specifically for AI agent
 
 By abstracting away infrastructure complexity, xpander.ai empowers you to focus on what matters most: building intelligent, effective AI agents.
 
+## 🌟 Featured Projects
+
+<table>
+  <tr>
+    <th>Project</th>
+    <th>Description</th>
+    <th>License</th>
+    <th>Tech Stack</th>
+    <th>Link</th>
+  </tr>
+  <tr>
+    <td>💻 Coding Agent</td>
+    <td>Framework-agnostic agent that reads, writes, and commits code to Git repositories</td>
+    <td>MIT</td>
+    <td>Python, OpenAI, Anthropic, Gemini, Llama 3</td>
+    <td><a href="https://github.com/xpander-ai/coding-agent">Repo</a></td>
+  </tr>
+  <tr>
+    <td>🎥 NVIDIA Meeting Recorder</td>
+    <td>AI assistant that records, transcribes, and extracts insights from meetings</td>
+    <td>Apache 2.0</td>
+    <td>Python, NVIDIA SDKs, Speech Recognition</td>
+    <td><a href="https://github.com/xpander-ai/nvidia-meeting-recorder-agent">Repo</a></td>
+  </tr>
+  <tr>
+    <td>🌍 Hello World Example</td>
+    <td>Simple starter template for building agents with xpander.ai</td>
+    <td>Apache 2.0</td>
+    <td>Python, OpenAI</td>
+    <td><a href="https://github.com/xpander-ai/xpander.ai/tree/main/examples/hello-world">Repo</a></td>
+  </tr>
+</table>
+
 ## 📦 Installation
 
 ```bash
