@@ -1,10 +1,13 @@
 <h3 align="center">
   <a name="readme-top"></a>
-  <img
-    src="https://raw.githubusercontent.com/xpanderai/xpander/main/img/xpander_logo.png"
-    height="170"
-    alt="xpander.ai Logo"
-  >
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/Purple Logo White text.png">
+    <img
+      src="images/Purple Logo Black Text.png"
+      height="170"
+      alt="xpander.ai Logo"
+    >
+  </picture>
 </h3>
 
 # **xpander.ai – Backend-as-a-Service for AI Agents**
