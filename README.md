@@ -180,7 +180,7 @@ elif llm_provider == LLMProvider.ANTHROPIC:
 
 ## ⚖️ License
 
-- Open-source runtime: AGPL-3.0
+- Open-source runtime: Apache License 2.0
 - Hosted platform: Commercial (free tier available)
 
 <p align="right">
