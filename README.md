@@ -43,7 +43,16 @@
 
 ---
 
-xpander.ai is a backend-as-a-service platform for AI agents. It provides production-ready infrastructure that supports all major AI frameworks (LangChain, Semantic Kernel, HuggingFace, CrewAI, etc.) and direct LLM vendor integrations (OpenAI, Anthropic, Mistral, etc.), so you can focus on building intelligent agents rather than managing infrastructure.
+xpander.ai is a backend-as-a-service platform designed specifically for AI agents. Our production-grade infrastructure seamlessly integrates with leading AI frameworks including CrewAI, Huggingface and LlamaIndex, as well as direct LLM vendor APIs from OpenAI, Amazon Bedrock, and Nvidia. The platform offers a modular approach to building your agentic stack:
+
+- **Framework Flexibility**: Choose from popular frameworks like OpenAI ADK, Agno, CrewAI, LangChain, or work directly with native LLM APIs
+- **Tool Integration**: Access our comprehensive MCP-compatible tools library and pre-built integrations
+- **Scalable Hosting**: Deploy and scale your agents effortlessly on our managed infrastructure
+- **State Management**: Opt for framework-specific local state or leverage our distributed state management system
+- **Real-time Events**: Harness our event streaming capabilities for Slackbots, ChatUIs, Agent2Agent communication, and Webhook integrations
+- **API Guardrials**: Implement robust guardrails using our Agent-Graph-System to define and manage dependencies between API actions of tool-use
+
+By abstracting away infrastructure complexity, xpander.ai empowers you to focus on what matters most: building intelligent, effective AI agents.
 
 ## 📦 Installation
 
@@ -137,22 +146,10 @@ python xpander_handler.py     # For event-driven mode
 llm_provider = LLMProvider.ANTHROPIC  # Or other supported providers
 
 # During initialization
-self.agent.select_llm_provider(llm_provider)
+self.agent.select_llm_provider(llm_provider)  # This will convert the messages and tools object to the specific LLM format
 
-# Initialize provider client
-if llm_provider == LLMProvider.OPEN_AI:
-    self.model_endpoint = AsyncOpenAIProvider()
-elif llm_provider == LLMProvider.ANTHROPIC:
-    self.model_endpoint = AsyncAnthropicProvider()
+self.model_endpoint = AsyncAnthropicProvider()  # Add the actual implementation of the model invoke
 ```
-
-## 📋 Framework Support
-
-| Framework      | Example                     | Link                                                                 |
-|----------------|-----------------------------|----------------------------------------------------------------------|
-| LangChain      | Customer support chatbot     | [Python Example](https://github.com/xpanderai/xpander/tree/main/examples/langchain_customer_support.py) |
-| HuggingFace    | Image-to-text pipeline agent | [Python Example](https://github.com/xpanderai/xpander/tree/main/examples/huggingface_image_to_text.py) |
-| Semantic Kernel| Calendar + Email orchestrator| [C# Example](https://github.com/xpanderai/xpander/tree/main/examples/semantic_kernel_calendar_email.cs) |
 
 ## 🏗️ Core Features
 
@@ -174,9 +171,9 @@ elif llm_provider == LLMProvider.ANTHROPIC:
 ## 📚 Documentation & Resources
 
 - [Documentation](https://docs.xpander.ai)  
-- [API Reference](https://docs.xpander.ai/api)  
-- [Example Library](https://github.com/xpanderai/xpander/tree/main/examples)  
-- [Discord Community](https://discord.gg/xpanderai)  
+- [API Reference](https://docs.xpander.ai/api-reference/07-sdk)  
+- [Example Library](https://github.com/xpander-ai/xpander.ai/tree/main/examples)  
+- [Discord Community](https://discord.gg/CUcp4WWh5g)  
 
 ## ⚖️ License
 
