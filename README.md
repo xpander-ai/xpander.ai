@@ -7,7 +7,7 @@
   >
 </h3>
 
-# **xpander.ai – Multi-Framework Runtime for AI Agents**
+# **xpander.ai – Backend-as-a-Service for AI Agents**
 
 <div align="center">
   <a href="https://github.com/xpanderai/xpander/blob/main/LICENSE">
@@ -40,7 +40,7 @@
 
 ---
 
-xpander.ai is an open-source runtime infrastructure that lets you build, deploy, and scale AI agents as production-ready backend services. Use any AI framework (LangChain, Semantic Kernel, HuggingFace, etc.), connect to any LLM, and leverage built-in observability.
+xpander.ai is a backend-as-a-service platform for AI agents. It provides production-ready infrastructure that supports all major AI frameworks (LangChain, Semantic Kernel, HuggingFace, CrewAI, etc.) and direct LLM vendor integrations (OpenAI, Anthropic, Mistral, etc.), so you can focus on building intelligent agents rather than managing infrastructure.
 
 ## 📦 Installation
 
@@ -167,17 +167,6 @@ elif llm_provider == LLMProvider.ANTHROPIC:
 - **UI Integrations**: Slack, Teams, web interfaces, and more
 - **Versioning & Lifecycle**: Staging, production rollouts, and A/B testing
 
-## 🌐 Open Source vs Hosted Platform
-
-| Feature                | Open-Source Runtime | Hosted Platform         |
-|------------------------|---------------------|------------------------|
-| Agent Execution        | ✅                  | ✅                     |
-| Tool Library           | ✅                  | ✅                     |
-| Observability          | ⚠️ (logs only)      | ✅ (trace, UI)          |
-| Management UI          | ❌                  | ✅                     |
-| Templates & Workbench  | ❌                  | ✅                     |
-| Auth/SLA/RBAC          | ❌                  | ✅                     |
-| Enterprise Support     | ❌                  | ✅                     |
 
 ## 📚 Documentation & Resources
 
