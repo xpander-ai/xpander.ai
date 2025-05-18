@@ -28,7 +28,7 @@
 xpander.ai is a backend-as-a-service platform designed specifically for AI agents. It lets you deploy and run agents built with major agent frameworks and SDKs without worrying about infrastructure.
 With framework-agnostic built-in memory and state management, the platform makes it easy to run your agents - whether you build them from scratch, or leverage your favorite AI framework.
 
-Use The visual workbench to define tool dependency graphs, trace prompt flows, analyze payloads, and compare models - all in one place. Integrate seamlessly with human-facing UIs like Slack, Teams or ChatGPT like interfaces, and trigger agents via APIs, schedules, or agent-to-agent calls. 
+Use the visual workbench to define tool dependency graphs, trace prompt flows, analyze payloads, and compare models - all in one place. Integrate seamlessly with human-facing UIs like Slack, Teams or ChatGPT like interfaces, and trigger agents via APIs, schedules, or agent-to-agent calls. 
 
 xpander.ai is the swiss-army knife that helps you move from prototype to production - fast.
 
