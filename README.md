@@ -24,11 +24,17 @@
 
 ---
 
-xpander.ai is a backend-as-a-service platform designed specifically for AI agents. Our production-grade infrastructure seamlessly integrates with leading AI frameworks including CrewAI, Huggingface and LlamaIndex, as well as direct LLM vendor APIs from OpenAI, Amazon Bedrock, and Nvidia. The platform offers a modular approach to building your agentic stack:
 
-- **Framework Flexibility**: Choose from popular frameworks like OpenAI ADK, Agno, CrewAI, LangChain, or work directly with native LLM APIs
-- **Tool Integration**: Access our comprehensive MCP-compatible tools library and pre-built integrations
-- **Scalable Hosting**: Deploy and scale your agents effortlessly on our managed infrastructure
+xpander.ai is a backend-as-a-service platform designed specifically for AI agents. It lets you deploy and run agents built with major agent frameworks and SDKs without worrying about infrastructure.
+With framework-agnostic built-in memory and state management, the platform makes it easy to run your agents - whether you build them from scratch, or leverage your favorite AI framework.
+
+Use The visual workbench to define tool dependency graphs, trace prompt flows, analyze payloads, and compare models - all in one place. Integrate seamlessly with human-facing UIs like Slack, Teams or ChatGPT like interfaces, and trigger agents via APIs, schedules, or agent-to-agent calls. 
+
+xpander.ai is the swiss-army knife that helps you move from prototype to production - fast.
+
+- **Framework Flexibility**: Deploy agents from major frameworks such as Agno, Llamaindex, CrewAI, LangGraph or work directly with native LLM APIs.
+- **Tool Integration**: Access our comprehensive MCP-compatible tools library, or easily generate your own tools from API documentation. 
+- **Scalable Hosting**: Deploy and scale your agents effortlessly on our managed infrastructure, just like general Backend-as-a-service platforms, but superpowered for AI Agents.
 - **State Management**: Opt for framework-specific local state or leverage our distributed state management system
 - **Real-time Events**: Harness our event streaming capabilities for Slackbots, ChatUIs, Agent2Agent communication, and Webhook integrations
 - **API Guardrails**: Implement robust guardrails using our Agent-Graph-System to define and manage dependencies between API actions of tool-use
@@ -219,19 +225,45 @@ self.model_endpoint = AsyncAnthropicProvider()  # Add the actual implementation 
 
 ## 🏗️ Core Features
 
-### Development Features
-- **Framework Agnostic**: Support for LangChain, Semantic Kernel, HuggingFace, CrewAI, and custom agents
-- **Tool Management**: Drop-in tool libraries and auto-generation from OpenAPI specs
-- **LLM Flexibility**: Connect to any LLM (OpenAI, Anthropic, Mistral, etc.)
-- **State & Memory**: Built-in state machine, message history, and persistent memory
-- **Multi-Agent Orchestration**: Chain agents, handle handoffs, and manage cross-runtime logic
+## For developers; Accelerate agent development without infrastructure headaches
 
-### Infrastructure Features
-- **Runtime Environment**: Deploy agents as real backend services
-- **Observability**: Trace every step of execution, model decisions, and tool calls
-- **Multiple Triggers**: API, webhooks, UI, or inter-agent communication
-- **UI Integrations**: Slack, Teams, web interfaces, and more
-- **Versioning & Lifecycle**: Staging, production rollouts, and A/B testing
+🚀 Deploy and run agents built with major frameworks and SDKs
+
+🧠 Built-in agent memory & state persistence
+
+🛠️ Use our tool library or generate tools from any API
+
+⚙️ Visual agent workbench: tool dependencies, agent handovers, prompt tracing
+
+📉 Tracing and logs: model thoughts, tool calls, payloads
+
+🕹️ Trigger agents via MCP, A2A, Schedules, Slack, web UI and more
+
+🔐 Bring your own LLM keys or use ours (securely stored)
+
+💸 Faster + cheaper tool calling via optimized execution layer
+
+☁️ Run agents in the cloud as easy as Docker Compose
+
+## For agent platform owners; Manage and govern AI Agents centrally ➡️ platform engineering for AI Agents
+
+📊 Single-pane-of-glass view of all agents in your org
+
+🧱 Scaffolded agent templates for reusable workflows
+
+🔐 Auth via OIDC, SAML, and context-aware user controls
+
+🧭 Agent lifecycle: versioning, environment & deployment management
+
+📦 Secure agent deployment in your VPC
+
+📉 Export observability to your existing logging/monitoring stack
+
+🌐 Self-hosted Agent Hub with A2A discovery
+
+🔎 Tool calling policies & SLA enforcement per agent
+
+🎯Centralized gateways for LLM integrations and API tool calling
 
 
 ## 📚 Documentation & Resources
