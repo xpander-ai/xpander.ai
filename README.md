@@ -223,7 +223,6 @@ self.model_endpoint = AsyncAnthropicProvider()  # Add the actual implementation 
 
 - [Documentation](https://docs.xpander.ai)  
 - [API Reference](https://docs.xpander.ai/api-reference/07-sdk)  
-- [Example Library](https://github.com/xpander-ai/xpander.ai/tree/main/examples)  
 - [Discord Community](https://discord.gg/CUcp4WWh5g)  
 
 ## ⚖️ License
