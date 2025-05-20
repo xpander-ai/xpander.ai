@@ -45,11 +45,28 @@ By abstracting away infrastructure complexity, xpander.ai empowers you to focus 
 
 ## Adding a backend to your agents in less than 5 minutes
 
+## 📦 Installation
+
+```bash
+# Python
+pip install xpander-sdk
+
+# Node.js
+npm install @xpander-ai/sdk
+
+# CLI (for agent creation)
+npm install -g xpander-cli
+```
+
+### Use xpander-cli to scaffold a new agent template
+
 ```bash
 xpander login
 xpander agent new
 python xpander_handler.py  # <-- Events with entry point for your agents
 ```
+
+### Bring your AI agent code and stream events to your agent
 
 Add one line of code to xpander_handler.py and your agent will be accessible via Agent2Agent, Slackbots, MCP servers, or WebUI.
 
@@ -62,10 +79,41 @@ on_execution_request(execution_task: AgentExecution) -> AgentExecutionResult:
     ) 
 ```
 
-Deploy agent to the cloud
+### (Optional but highly recommended): Instrument your agent with AI tools and state management
+
+```python
+from xpander_sdk import XpanderClient, Agent
+
+# Init the clients
+xpander_client = XpanderClient(api_key="YOUR_XPANDER_API_KEY")
+agent_backend : Agent = xpander_client.agents.get(agent_id="YOUR_AGENT_ID")  
+
+# Initializing a new task creates a new conversation thread with empty agent state
+xpander_agent.add_task("What can you do?")
+
+response = openai_client.chat.completions.create(
+      model="gpt-4o", 
+      messages=agent_backend.messages,  # <-- Automatically loads the current state in the LLM format
+      tools=agent_backend.get_tools(),  ## <-- Automatically loads all the tool schemas from the cloud
+      tool_choice=agent_backend.tool_choice,
+      temperature=0.0
+  )
+        
+# Save the LLM Current state
+agent.add_messages(response.model_dump())
+
+# Extract the tools requested by the AI Model
+tool_calls = XpanderClient.extract_tool_calls(llm_response=response.model_dump())
+
+# Execute tools automatically and securely in the cloud after validating schema and loading user overrides and authentication
+agent.run_tools(tool_calls=tool_calls)
+```
+
+### Deploy agent to the cloud
 
 ```bash
-xpander deploy
+xpander deploy  # Will deploy the Docker container to the cloud and run it via the xpander_handler.py file
+xpander logs    # Will stream logs locally from the agent configured locally
 ```
 
 ## 🌟 Featured AI Agents
@@ -101,88 +149,9 @@ xpander deploy
   </tr>
 </table>
 
-## 📦 Installation
-
-```bash
-# Python
-pip install xpander-sdk
-
-# Node.js
-npm install @xpander-ai/sdk
-
-# CLI (for agent creation)
-npm install -g xpander-cli
-```
-
-## 🚀 Quick Start
-
-### Simple example with any LLM provider:
-
-```python
-from xpander_sdk import XpanderClient, Agent
-
-# Init
-xpander_client = XpanderClient(api_key="YOUR_XPANDER_API_KEY")  # Get your API key via `xpander login`
-xpander_agent : Agent = xpander_client.agents.get(agent_id="YOUR_AGENT_ID")  # Get your agent ID via `xpander agent new`
-
-# Initializing a new task creates a new conversation thread with empty state (messages object is empty)
-xpander_agent.add_task("What can you do?")
-
-# Run the agent loop , the is_finished api will check if the Agent requested to stop
-while not xpander_agent.is_finished:
-
-    # Get LLM response with tools
-    response = your_llm_provider.chat.completions.create(
-        messages=xpander_agent.messages,  # Auto-translated between LLM models and frameworks and stored in the cloud
-        tools=xpander_agent.get_tools(),  # Add tools without writing Function Schema using the xpander.ai Workbench
-    )
-    
-    # Execute tools automatically and securely in the cloud after validating schema and loading user overrides and authentication
-    # Agent stops when LLM calls the "finished" tool
-    xpander_agent.run_tools(xpander_agent.extract_tool_calls(response))
-
-# Get results (immutable)
-result = xpander_agent.retrieve_execution_result()
-print(f"Answer: {result.result}")
-```
-
-### Create Event-Driven Agents
-
-```python xpander_handler.py
-async def on_execution_request(execution_task: AgentExecution) -> AgentExecutionResult:
-    # Your agent logic here
-    your_agent = YourAnyFrameworkAgent()
-    result = your_agent.invoke(execution_task.input)
-    return AgentExecutionResult(result=result, is_success=True)
-
-# Register event handler
-listener = XpanderEventListener(**xpander_cfg)
-listener.register(on_execution_request=on_execution_request)
-```
-
-### Framework Integration Examples
-
-#### LlamaIndex
-
-```python
-from llama_index.agent import OpenAIAgent
-from llama_index.llms import OpenAI
-
-# Initialize with xpander tools and memory
-agent = OpenAIAgent.from_tools(
-    tools=xpander_agent.get_tools("llamaindex"),
-    llm=OpenAI(model=xpander.get_model()),
-    memory=xpander_agent.get_memory(agent.to_dict()),
-    verbose=True
-)
-
-response = agent.chat("Your query here")
-xpander_agent.send_result(response)
-```
-
 ## 🧩 Hello World Example
 
-The `Getting-Started/hello-world` directory contains a simple agent implementation to demonstrate core concepts:
+The `Getting-Started/hello-world` directory contains a simple agent implementation to demonstrate core concepts of how to run asynchronous AI Agents with local tools and cloud tools, and a fully managed stateful state in a backend with xpander.ai:
 
 ```
 hello-world/
@@ -200,24 +169,7 @@ hello-world/
     └── async_function_caller.py # Async function caller utility
 ```
 
-### Deploy to the Cloud
-
-```bash
-xpander deploy  # Will deploy the Docker container to the cloud and run it via the xpander_handler.py file
-xpander logs    # Will stream logs locally from the agent configured locally
-```
-
-### Switching LLM Providers
-
-```python
-# In my_agent.py
-llm_provider = LLMProvider.ANTHROPIC  # Or other supported providers
-
-# During initialization
-self.agent.select_llm_provider(llm_provider)  # This will convert the messages and tools objects to the specific LLM format
-
-self.model_endpoint = AsyncAnthropicProvider()  # Add the actual implementation of the model invoke
-```
+See [Hello-world.md](Getting-Started/hello-world/README.md) for more details
 
 ## 📚 Documentation & Resources
 
