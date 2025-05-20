@@ -27,8 +27,9 @@
 xpander.ai offers Backend-as-a-Service infrastructure for autonomous agents: memory, tools, multi-user state, various agent triggering options (MCP, A2A, API, Web interfaces), storage, agent-to-agent messaging — designed to support any agent framework and SDK
 
 
-https://github.com/user-attachments/assets/6faeb9dd-ed94-4cb6-9063-634b1dc27863
+## Demo
 
+https://github.com/user-attachments/assets/6faeb9dd-ed94-4cb6-9063-634b1dc27863
 
 
 | Feature | Description |
@@ -150,9 +151,7 @@ print(f"Answer: {result.result}")
 
 ### Create Event-Driven Agents
 
-```python
-from xpander_utils.events import XpanderEventListener, AgentExecution, AgentExecutionResult
-
+```python xpander_handler.py
 async def on_execution_request(execution_task: AgentExecution) -> AgentExecutionResult:
     # Your agent logic here
     your_agent = YourAnyFrameworkAgent()
