@@ -24,16 +24,18 @@
 
 ---
 
-xpander.ai is a backend-as-a-service platform designed specifically for AI agents. Our production-grade infrastructure seamlessly integrates with leading AI frameworks including CrewAI, Huggingface and LlamaIndex, as well as direct LLM vendor APIs from OpenAI, Amazon Bedrock, and Nvidia. The platform offers a modular approach to building your agentic stack:
+xpander.ai helps developers give autonomous agents a backend—tools, memory, multi-user state, and Agent2Agent protocols—regardless of framework or vendor.
 
-- **Framework Flexibility**: Choose from popular frameworks like OpenAI ADK, Agno, CrewAI, LangChain, or work directly with native LLM APIs
-- **Tool Integration**: Access our comprehensive MCP-compatible tools library and pre-built integrations
-- **Scalable Hosting**: Deploy and scale your agents effortlessly on our managed infrastructure
-- **State Management**: Opt for framework-specific local state or leverage our distributed state management system
-- **Real-time Events**: Harness our event streaming capabilities for Slackbots, ChatUIs, Agent2Agent communication, and Webhook integrations
-- **API Guardrails**: Implement robust guardrails using our Agent-Graph-System to define and manage dependencies between API actions of tool-use
+| Feature | Description |
+|---------|-------------|
+| 🛠️ **Framework Flexibility** | Choose from popular frameworks like OpenAI ADK, Agno, CrewAI, LangChain, or work directly with native LLM APIs |
+| 🧰 **Tool Integration** | Access our comprehensive MCP-compatible tools library and pre-built integrations |
+| 🚀 **Scalable Hosting** | Deploy and scale your agents effortlessly on our managed infrastructure |
+| 💾 **State Management** | Opt for framework-specific local state or leverage our distributed state management system |
+| ⚡ **Real-time Events** | Harness our event streaming capabilities for Slackbots, ChatUIs, Agent2Agent communication, and Webhook integrations |
+| 🛡️ **API Guardrails** | Implement robust guardrails using our Agent-Graph-System to define and manage dependencies between API actions of tool-use |
 
-By abstracting away infrastructure complexity, xpander.ai empowers you to focus on what matters most: building intelligent, effective AI agents.
+By abstracting away infrastructure complexity, xpander.ai empowers you to focus on what matters most: building intelligent, effective, production-ready AI agents.
 
 ## 🌟 Featured Projects
 
