@@ -68,9 +68,6 @@ Deploy agent to the cloud
 xpander deploy
 ```
 
-## DEMO
-
-
 ## 🌟 Featured AI Agents
 
 <table>
