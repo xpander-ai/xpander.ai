@@ -37,7 +37,7 @@ xpander.ai helps developers give autonomous agents a backend—tools, memory, mu
 
 By abstracting away infrastructure complexity, xpander.ai empowers you to focus on what matters most: building intelligent, effective, production-ready AI agents.
 
-### Running agents with xpander.ai
+## Adding a backend to your agents in less than 5 minutes
 
 ```bash
 xpander login
@@ -55,6 +55,14 @@ on_execution_request(execution_task: AgentExecution) -> AgentExecutionResult:
         is_success=True,
     ) 
 ```
+
+Deploy agent to the cloud
+
+```bash
+xpander deploy
+```
+
+## DEMO
 
 
 ## 🌟 Featured AI Agents
