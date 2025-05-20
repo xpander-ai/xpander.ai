@@ -118,7 +118,7 @@ xpander deploy  # Will deploy the Docker container to the cloud and run it via t
 xpander logs    # Will stream logs locally from the agent configured locally
 ```
 
-## 🌟 Featured AI Agents
+## 🌟 Featured Open Source AI Agents Using xpander.ai
 
 <table>
   <tr>
