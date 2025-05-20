@@ -53,7 +53,7 @@ python xpander_handler.py  # <-- Events with entry point for your agents
 
 Add one line of code to xpander_handler.py and your agent will be accessible via Agent2Agent, Slackbots, MCP servers, or WebUI.
 
-```python
+```python xpander.handler.py
 on_execution_request(execution_task: AgentExecution) -> AgentExecutionResult:
   your_agent.invoke(execution_task.input.text)
   return AgentExecutionResult(
