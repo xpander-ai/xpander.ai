@@ -29,7 +29,9 @@ xpander.ai offers Backend-as-a-Service infrastructure for autonomous agents: mem
 
 ## Demo
 
-https://github.com/user-attachments/assets/6faeb9dd-ed94-4cb6-9063-634b1dc27863
+
+https://github.com/user-attachments/assets/4db1fb71-b898-46f7-9b7c-2ec588b531fb
+
 
 
 | Feature | Description |
