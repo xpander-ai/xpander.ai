@@ -24,7 +24,7 @@
 
 ---
 
-xpander.ai helps developers give autonomous agents a backend—tools, memory, multi-user state, and Agent2Agent protocols—regardless of framework or vendor.
+xpander.ai offers Backend-as-a-Service infrastructure for autonomous agents: memory, tools, multi-user state, various agent triggering options (MCP, A2A, API, Web interfaces), storage, agent-to-agent messaging — designed to support any agent framework and SDK
 
 | Feature | Description |
 |---------|-------------|
