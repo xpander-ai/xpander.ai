@@ -26,7 +26,6 @@
 
 xpander.ai helps developers give autonomous agents a backend—tools, memory, multi-user state, and Agent2Agent protocols—regardless of framework or vendor.
 
-
 | Feature | Description |
 |---------|-------------|
 | 🛠️ **Framework Flexibility** | Choose from popular frameworks like OpenAI ADK, Agno, CrewAI, LangChain, or work directly with native LLM APIs |
@@ -38,7 +37,27 @@ xpander.ai helps developers give autonomous agents a backend—tools, memory, mu
 
 By abstracting away infrastructure complexity, xpander.ai empowers you to focus on what matters most: building intelligent, effective, production-ready AI agents.
 
-## 🌟 Featured Projects
+### Running agents with xpander.ai
+
+```bash
+xpander login
+xpander agent new
+python xpander_handler.py  # <-- Events with entry point for your agents
+```
+
+Add one line of code to xpander_handler.py and your agent will be accessible via Agent2Agent, Slackbots, MCP servers, or WebUI.
+
+```python
+on_execution_request(execution_task: AgentExecution) -> AgentExecutionResult:
+  your_agent.invoke(execution_task.input.text)
+  return AgentExecutionResult(
+        result="your-agent-result",
+        is_success=True,
+    ) 
+```
+
+
+## 🌟 Featured AI Agents
 
 <table>
   <tr>
@@ -98,30 +117,22 @@ xpander_agent : Agent = xpander_client.agents.get(agent_id="YOUR_AGENT_ID")  # G
 # Initializing a new task creates a new conversation thread with empty state (messages object is empty)
 xpander_agent.add_task("What can you do?")
 
-# Run the agent loop
+# Run the agent loop , the is_finished api will check if the Agent requested to stop
 while not xpander_agent.is_finished:
 
     # Get LLM response with tools
     response = your_llm_provider.chat.completions.create(
-        messages=xpander_agent.messages,  # Auto-translated to match the agent's state
-        tools=xpander_agent.get_tools(),  # Auto-translated to match the agent's state
-        tool_choice=xpander_agent.tool_choice 
+        messages=xpander_agent.messages,  # Auto-translated between LLM models and frameworks and stored in the cloud
+        tools=xpander_agent.get_tools(),  # Add tools without writing Function Schema using the xpander.ai Workbench
     )
     
-    # Execute tools automatically (agent stops when LLM calls the "finished" tool)
+    # Execute tools automatically and securely in the cloud after validating schema and loading user overrides and authentication
+    # Agent stops when LLM calls the "finished" tool
     xpander_agent.run_tools(xpander_agent.extract_tool_calls(response))
 
-    # Optional: Manually stop agent execution
-    # xpander_agent.stop_execution(is_success=True, result="Your result here")
-
-# Get results
+# Get results (immutable)
 result = xpander_agent.retrieve_execution_result()
 print(f"Answer: {result.result}")
-
-# Continue the same conversation later with:
-# agent.add_task("Follow-up question", thread_id=result.memory_thread_id)
-
-# Or create a new conversation with add_task()
 ```
 
 ### Create Event-Driven Agents
@@ -180,27 +191,6 @@ hello-world/
     └── async_function_caller.py # Async function caller utility
 ```
 
-### Running the Example
-
-```bash
-# Navigate to the hello-world example
-cd Getting-Started/hello-world
-
-## Python venv
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-
-## Agent creation
-xpander login
-xpander agent new
-
-## Run the agent locally
-python app.py                   # For CLI mode
-# OR
-python xpander_handler.py       # For event-driven mode
-```
-
 ### Deploy to the Cloud
 
 ```bash
@@ -219,49 +209,6 @@ self.agent.select_llm_provider(llm_provider)  # This will convert the messages a
 
 self.model_endpoint = AsyncAnthropicProvider()  # Add the actual implementation of the model invoke
 ```
-
-## 🏗️ Core Features
-
-## For developers; Accelerate agent development without infrastructure headaches
-
-🚀 Deploy and run agents built with major frameworks and SDKs
-
-🧠 Built-in agent memory & state persistence
-
-🛠️ Use our tool library or generate tools from any API
-
-⚙️ Visual agent workbench: tool dependencies, agent handovers, prompt tracing
-
-📉 Tracing and logs: model thoughts, tool calls, payloads
-
-🕹️ Trigger agents via MCP, A2A, Schedules, Slack, web UI and more
-
-🔐 Bring your own LLM keys or use ours (securely stored)
-
-💸 Faster + cheaper tool calling via optimized execution layer
-
-☁️ Run agents in the cloud as easy as Docker Compose
-
-## For agent platform owners; Manage and govern AI Agents centrally ➡️ platform engineering for AI Agents
-
-📊 Single-pane-of-glass view of all agents in your org
-
-🧱 Scaffolded agent templates for reusable workflows
-
-🔐 Auth via OIDC, SAML, and context-aware user controls
-
-🧭 Agent lifecycle: versioning, environment & deployment management
-
-📦 Secure agent deployment in your VPC
-
-📉 Export observability to your existing logging/monitoring stack
-
-🌐 Self-hosted Agent Hub with A2A discovery
-
-🔎 Tool calling policies & SLA enforcement per agent
-
-🎯Centralized gateways for LLM integrations and API tool calling
-
 
 ## 📚 Documentation & Resources
 
