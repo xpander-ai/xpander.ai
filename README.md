@@ -221,19 +221,45 @@ self.model_endpoint = AsyncAnthropicProvider()  # Add the actual implementation 
 
 ## 🏗️ Core Features
 
-### Development Features
-- **Framework Agnostic**: Support for LangChain, Semantic Kernel, HuggingFace, CrewAI, and custom agents
-- **Tool Management**: Drop-in tool libraries and auto-generation from OpenAPI specs
-- **LLM Flexibility**: Connect to any LLM (OpenAI, Anthropic, Mistral, etc.)
-- **State & Memory**: Built-in state machine, message history, and persistent memory
-- **Multi-Agent Orchestration**: Chain agents, handle handoffs, and manage cross-runtime logic
+## For developers; Accelerate agent development without infrastructure headaches
 
-### Infrastructure Features
-- **Runtime Environment**: Deploy agents as real backend services
-- **Observability**: Trace every step of execution, model decisions, and tool calls
-- **Multiple Triggers**: API, webhooks, UI, or inter-agent communication
-- **UI Integrations**: Slack, Teams, web interfaces, and more
-- **Versioning & Lifecycle**: Staging, production rollouts, and A/B testing
+🚀 Deploy and run agents built with major frameworks and SDKs
+
+🧠 Built-in agent memory & state persistence
+
+🛠️ Use our tool library or generate tools from any API
+
+⚙️ Visual agent workbench: tool dependencies, agent handovers, prompt tracing
+
+📉 Tracing and logs: model thoughts, tool calls, payloads
+
+🕹️ Trigger agents via MCP, A2A, Schedules, Slack, web UI and more
+
+🔐 Bring your own LLM keys or use ours (securely stored)
+
+💸 Faster + cheaper tool calling via optimized execution layer
+
+☁️ Run agents in the cloud as easy as Docker Compose
+
+## For agent platform owners; Manage and govern AI Agents centrally ➡️ platform engineering for AI Agents
+
+📊 Single-pane-of-glass view of all agents in your org
+
+🧱 Scaffolded agent templates for reusable workflows
+
+🔐 Auth via OIDC, SAML, and context-aware user controls
+
+🧭 Agent lifecycle: versioning, environment & deployment management
+
+📦 Secure agent deployment in your VPC
+
+📉 Export observability to your existing logging/monitoring stack
+
+🌐 Self-hosted Agent Hub with A2A discovery
+
+🔎 Tool calling policies & SLA enforcement per agent
+
+🎯Centralized gateways for LLM integrations and API tool calling
 
 
 ## 📚 Documentation & Resources
