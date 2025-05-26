@@ -10,9 +10,9 @@
   </picture>
 </h3>
 
-# **Backend-as-a-Service for AI Agents**
-
 <div align="center">
+  <h1>Backend-as-a-Service for AI Agents</h1>
+
   <a href="https://pepy.tech/projects/xpander-sdk"><img src="https://static.pepy.tech/badge/xpander-sdk/month"></a> 
   <a href="https://github.com/xpander-ai/xpander.ai/blob/main/LICENSE"><img src="https://img.shields.io/github/license/xpander-ai/xpander.ai" alt="License"></a> <a href="https://pypi.org/project/xpander-sdk"><img src="https://img.shields.io/pypi/v/xpander-sdk" alt="PyPI Version"></a> <a href="https://npmjs.com/package/xpander-sdk"><img src="https://img.shields.io/npm/v/xpander-sdk" alt="NPM Version"></a> <a href="https://app.xpander.ai"><img src="https://img.shields.io/badge/Visit-xpander.ai-30a46c" alt="Platform Login"></a>
 </div>
