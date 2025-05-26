@@ -29,10 +29,8 @@ xpander.ai offers Backend-as-a-Service infrastructure for autonomous agents: mem
 
 ## Demo
 
-<video width="100%" controls>
-  <source src="demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+
+https://github.com/patchy631/xpander.ai/raw/test/demo.mp4
 
 
 
