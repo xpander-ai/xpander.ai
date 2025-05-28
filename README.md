@@ -46,6 +46,30 @@ https://github.com/user-attachments/assets/4db1fb71-b898-46f7-9b7c-2ec588b531fb
 
 By abstracting away infrastructure complexity, xpander.ai empowers you to focus on what matters most: building intelligent, effective, production-ready AI agents.
 
+## ⭐ Featured template - fully-featured cloud-based SWE agent
+
+1. Login to https://app.xpander.ai and go to the Templates section  
+2. Deploy the Coding agent  
+3. Send tasks to the agent.  
+Examples:  
+     ```
+     Clone the <my-repo-name> repo and add the following feature to the codebase ..., then create a PR with the new code.
+     ```
+     ```
+     Find all open PRs that have been waiting on review for more than 3 days.
+     ```
+4. Continue customizing, adding tools, configure triggering (MCP, A2A, Webhooks), multi-agent collaboration, and more.
+
+
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/codingagent2.png">
+    <img
+      src="images/codingagent2.png"
+      style="max-width: 100%; height: auto; width: auto; max-height: 170px;"
+      alt="xpander.ai Logo"
+    >
+  </picture>
+
 ## Adding a backend to your agents in less than 5 minutes
 
 ## 📦 Installation
