@@ -19,7 +19,7 @@ async def main():
     
     # start the agent
     thread = await agent.chat(
-        "Hi!, what can you do ?"
+        "Hi!"
     )
     
     while True:
