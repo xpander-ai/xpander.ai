@@ -1,6 +1,6 @@
 import json
 import asyncio
-from xpander_sdk import XpanderClient , Agent
+from xpander_sdk import XpanderClient, Agent
 
 from my_agent import MyAgent
 
@@ -11,7 +11,7 @@ with open('xpander_config.json', 'r') as config_file:
 
 # initialize xpander_client
 xpander_client = XpanderClient(api_key=xpander_config.get("api_key"))
-xpander_agent : Agent = xpander_client.agents.get(agent_id=xpander_config.get("agent_id"))
+xpander_agent: Agent = xpander_client.agents.get(agent_id=xpander_config.get("agent_id"))
 
 async def main():
     # initialize agent

@@ -4,3 +4,5 @@ openai
 dotenv
 loguru
 asyncio
+tabulate
+python-dotenv
