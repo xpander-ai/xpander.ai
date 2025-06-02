@@ -6,3 +6,4 @@ loguru
 asyncio
 tabulate
 python-dotenv
+requests
