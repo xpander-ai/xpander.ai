@@ -1,0 +1,22 @@
+{
+  "name": "hello-world-node",
+  "version": "1.0.0",
+  "description": "Node.js Hello World app using xpander-sdk",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.0.0",
+    "openai": "^4.0.0",
+    "xpander-sdk": "file:../../../../xpander-sdk/dist/js/xpander-sdk@0.0.0.jsii.tgz"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "author": "Xpander AI",
+  "license": "MIT"
+}

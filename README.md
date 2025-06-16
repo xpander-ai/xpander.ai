@@ -153,6 +153,13 @@ xpander logs    # Will stream logs locally from the agent configured locally
     <th>Tech Stack</th>
     <th>Link</th>
   </tr>
+    <tr>
+    <td>☸️ Agno EKS Agent</td>
+    <td>Kubernetes operations agent with Agno framework, xpander backend, and AWS EKS MCP servers</td>
+    <td>Apache 2.0</td>
+    <td>Python, Agno, AWS EKS, MCP</td>
+    <td><a href="https://github.com/xpander-ai/xpander.ai/tree/main/framework-examples/agno-agent">Repo</a></td>
+  </tr>
   <tr>
     <td>💻 Coding Agent</td>
     <td>Framework-agnostic agent that reads, writes, and commits code to Git repositories</td>
@@ -167,36 +174,53 @@ xpander logs    # Will stream logs locally from the agent configured locally
     <td>Python, NVIDIA SDKs, Speech Recognition</td>
     <td><a href="https://github.com/xpander-ai/nvidia-meeting-recorder-agent">Repo</a></td>
   </tr>
-  <tr>
-    <td>🌍 Hello World Example</td>
-    <td>Simple starter template for building agents with xpander.ai</td>
-    <td>Apache 2.0</td>
-    <td>Python, OpenAI</td>
-    <td><a href="https://github.com/xpander-ai/xpander.ai/tree/main/examples/hello-world">Repo</a></td>
-  </tr>
 </table>
 
-## 🧩 Hello World Example
+## 🧩 Getting Started Examples
 
-The `Getting-Started/hello-world` directory contains a simple agent implementation to demonstrate core concepts of how to run asynchronous AI Agents with local tools and cloud tools, and a fully managed stateful state in a backend with xpander.ai:
+The repository provides comprehensive examples to help you build AI agents with xpander.ai:
+
+### Hello World Examples
+
+Choose your preferred language to get started:
+
+#### 🐍 Python Example
+`Getting-Started/python/hello-world/` - A comprehensive Python implementation demonstrating:
 
 ```
-hello-world/
-├── app.py                      # CLI entry point for the agent with local thread
-├── my_agent.py                 # Agent implementation (Your agent code goes here)
-├── xpander_handler.py          # Event handler for incoming events from the platform
-├── Dockerfile                  # For containerized deployment
+python/hello-world/
+├── app.py                      # CLI entry point for the agent
+├── my_agent.py                 # Main agent implementation
+├── my_agent.ipynb              # Jupyter notebook version
+├── xpander_handler.py          # Event handler for platform events
+├── agent_instructions.json     # Agent persona configuration
+├── xpander_config.json         # API credentials configuration
+├── Dockerfile                  # Container definition for deployment
 ├── providers/
 │   ├── ai_frameworks/          # Framework integrations
 │   └── llms/                   # LLM provider implementations
-│       ├── openai/             # OpenAI specific implementation
-│       └── ...
+│       └── openai/             # OpenAI specific implementation
 └── tools/
-    ├── local_tools.py          # Custom tools implementation
+    ├── local_tools.py          # Custom tool implementations
     └── async_function_caller.py # Async function caller utility
 ```
 
-See [Hello-world.md](Getting-Started/hello-world/README.md) for more details
+#### 🟨 Node.js Example
+`Getting-Started/node/hello-world/` - A Node.js implementation with camelCase conventions:
+
+```
+node/hello-world/
+├── app.js                      # Main application entry point
+├── MyAgent.js                  # Agent implementation class
+├── package.json                # Node.js dependencies and scripts
+├── xpander_config.json         # Xpander API configuration
+├── agent_instructions.json     # Agent role and instructions
+└── env.template               # Environment variables template
+```
+
+See individual README files in each directory for detailed setup instructions:
+- [Python Hello World](Getting-Started/python/hello-world/README.md)
+- [Node.js Hello World](Getting-Started/node/hello-world/README.md)
 
 ## 📚 Documentation & Resources
 
