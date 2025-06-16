@@ -6,7 +6,7 @@ Simple example integrating **Agno agents** with **Xpander backend** and **AWS EK
 
 ```bash
 # Install Xpander CLI
-pip install xpander-cli
+npm install -g xpander-cli
 
 # Login and create project
 xpander login
