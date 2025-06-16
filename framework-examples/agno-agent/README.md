@@ -1,4 +1,4 @@
-# Agno + Xpander + MCP Example
+# Agno + xpander.ai + AWS MCP Example
 
 Simple example integrating **Agno agents** with **Xpander backend** and **AWS EKS MCP servers**.
 
