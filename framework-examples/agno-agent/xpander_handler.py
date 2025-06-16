@@ -1,11 +1,15 @@
 import json
 import asyncio
+import os
 from xpander_utils.events import XpanderEventListener, AgentExecutionResult, AgentExecution
 from xpander_utils.sdk.adapters import AgnoAdapter
 
 from pathlib import Path
-from myCoolAgnoAgent import MyCoolAgnoAgent
+from dotenv import load_dotenv
+from agno_agent_with_backend import AgnoAgentWithBackend
 from xpander_sdk import LLMTokens, Tokens
+
+load_dotenv()
 
 CFG_PATH = Path("xpander_config.json")
 if not CFG_PATH.exists():
@@ -18,7 +22,7 @@ xpander_backend: AgnoAdapter = asyncio.run(
     asyncio.to_thread(AgnoAdapter, agent_id=xpander_cfg["agent_id"], api_key=xpander_cfg["api_key"])
 )
 
-my_cool_agno_agent = MyCoolAgnoAgent(xpander_backend)
+agno_agent_with_backend = AgnoAgentWithBackend(xpander_backend)
 
 # === Define Execution Handler ===
 async def on_execution_request(execution_task: AgentExecution) -> AgentExecutionResult:
@@ -44,7 +48,7 @@ async def on_execution_request(execution_task: AgentExecution) -> AgentExecution
             f"Email: {execution_task.input.user.email}" 
         )
         
-        agent_response = await my_cool_agno_agent.run(IncomingEvent, execution_task.input.user.id, execution_task.memory_thread_id)
+        agent_response = await agno_agent_with_backend.run(IncomingEvent, execution_task.input.user.id, execution_task.memory_thread_id)
         metrics = agent_response.metrics
         llm_tokens = LLMTokens(
             completion_tokens=sum(metrics['completion_tokens']),
