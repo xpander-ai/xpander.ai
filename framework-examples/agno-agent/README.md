@@ -38,6 +38,10 @@ pip install -r requirements.txt
   python agno_agent_with_backend.py
   ```
 
+https://github.com/user-attachments/assets/4975ec55-617f-4c3f-9f3b-3b9cd073186f
+
+
+
 Both scripts will run in CLI mode and output results to your terminal.
 
 ### 3. Stream events (A2A, MCP, Slack, WebUI) to your agent
@@ -102,10 +106,20 @@ The output shows two important URLs:
 - **Chat UI**: Use this to send events and interact with your agent
 - **Builder UI**: Use this to configure your agent settings
 
+
+https://github.com/user-attachments/assets/bdf676df-a970-4b28-8a65-9a28cbca630b
+
+
 Ask questions through the chat UI:
 - "List pods in default namespace"
 - "Show nginx service status" 
 - "Get cluster nodes"
+
+One cool example
+
+<img width="961" alt="slack" src="https://github.com/user-attachments/assets/af5347d9-3cf4-41d8-a5f6-487aa53bf020" />
+<img width="915" alt="image" src="https://github.com/user-attachments/assets/06b89516-9658-4c02-a1a0-815f824e3d7d" />
+
 
 ## Deployment
 
