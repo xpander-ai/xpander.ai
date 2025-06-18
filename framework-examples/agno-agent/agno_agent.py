@@ -1,8 +1,11 @@
 import asyncio
+from dotenv import load_dotenv
+import os
 from agno.agent import Agent
 from agno.models.openai import OpenAIChat
 from agno.tools.mcp import  MultiMCPTools
 from agno.tools.thinking import ThinkingTools
+load_dotenv()
 
 class AgnoAgent:
     def __init__(self):
@@ -11,7 +14,7 @@ class AgnoAgent:
                 "uvx awslabs.core-mcp-server@latest",
                 "uvx awslabs.eks-mcp-server@latest --allow-sensitive-data-access"
             ], 
-            env={"AWS_PROFILE": "prod", "AWS_REGION": "us-west-2"}
+            env={"AWS_ACCESS_KEY_ID": os.environ["PROD_AWS_ACCESS_KEY_ID"] , "AWS_SECRET_ACCESS_KEY": os.environ["PROD_AWS_SECRET_ACCESS_KEY"], "AWS_REGION": os.environ["PROD_AWS_REGION"]}
         )
         self.agent = None
     
@@ -59,10 +62,14 @@ class AgnoAgent:
 if __name__ == "__main__":
     async def main():            
         async with AgnoAgent() as agno_agent:
-            await agno_agent.run(
-                "Can you get the last svc-api-caller logs and see if there are any error?", 
-                "123", 
-                "456"
-            )
+            while True:
+                message = input("Enter a message: (type exit to exit)")
+                if message == "exit":
+                    break
+                await agno_agent.run(
+                    message, 
+                    user_id="123", 
+                    session_id="456"
+                )
 
     asyncio.run(main())

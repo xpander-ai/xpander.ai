@@ -1,5 +1,6 @@
 import asyncio
 import json
+import os
 from agno.agent import Agent
 from agno.models.openai import OpenAIChat
 from agno.tools.mcp import  MultiMCPTools
@@ -20,7 +21,7 @@ class AgnoAgentWithBackend:
                 "uvx awslabs.core-mcp-server@latest",
                 "uvx awslabs.eks-mcp-server@latest --allow-sensitive-data-access"
             ], 
-            env={"AWS_PROFILE": "prod", "AWS_REGION": "us-west-2"}
+            env={"AWS_ACCESS_KEY_ID": os.environ["PROD_AWS_ACCESS_KEY_ID"] , "AWS_SECRET_ACCESS_KEY": os.environ["PROD_AWS_SECRET_ACCESS_KEY"], "AWS_REGION": os.environ["PROD_AWS_REGION"]}
         )
         self.agent_backend = agent_backend
         self.agent = None
@@ -62,6 +63,7 @@ class AgnoAgentWithBackend:
     
 if __name__ == "__main__":
     async def main():
+        print("Starting Agno Agent with xpander.ai Backend", xpander_cfg["agent_id"])
         xpander_backend: AgnoAdapter = await asyncio.to_thread(
             AgnoAdapter, 
             agent_id=xpander_cfg["agent_id"], 
@@ -69,11 +71,19 @@ if __name__ == "__main__":
         )
         
         async with AgnoAgentWithBackend(xpander_backend) as agno_agent_with_backend:
-            await agno_agent_with_backend.run(
-                "Can you get the last svc-api-caller logs and see if there are any error?", 
-                "123", 
-                "456", 
-                cli=True
-            )
+            while True:
+                message = input("Enter a message: (type exit to exit)")
+                xpander_backend.agent.add_task(
+                    input=message,
+                    thread_id="456",
+                )
+                if message == "exit":
+                    break
+                await agno_agent_with_backend.run(
+                    message, 
+                    user_id="123", 
+                    session_id="456", 
+                    cli=True
+                )
 
     asyncio.run(main())
