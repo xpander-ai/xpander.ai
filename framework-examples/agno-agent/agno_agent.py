@@ -14,7 +14,7 @@ class AgnoAgent:
                 "uvx awslabs.core-mcp-server@latest",
                 "uvx awslabs.eks-mcp-server@latest --allow-sensitive-data-access"
             ], 
-            env={"AWS_ACCESS_KEY_ID": os.environ["PROD_AWS_ACCESS_KEY_ID"] , "AWS_SECRET_ACCESS_KEY": os.environ["PROD_AWS_SECRET_ACCESS_KEY"], "AWS_REGION": os.environ["PROD_AWS_REGION"]}
+            env={"AWS_ACCESS_KEY_ID": os.environ["AWS_ACCESS_KEY_ID"] , "AWS_SECRET_ACCESS_KEY": os.environ["AWS_SECRET_ACCESS_KEY"], "AWS_REGION": os.environ["AWS_REGION"]}
         )
         self.agent = None
     
