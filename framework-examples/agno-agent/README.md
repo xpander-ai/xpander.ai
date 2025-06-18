@@ -1,9 +1,9 @@
 <h3 align="center">
   <a name="readme-top"></a>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/Purple%20Logo%20White%20text.png">
+    <source media="(prefers-color-scheme: dark)" srcset="../../images/Purple%20Logo%20White%20text.png">
     <img
-      src="images/Purple%20Logo%20Black%20Text.png"
+      src="../../images/Purple%20Logo%20Black%20Text.png"
       style="max-width: 100%; height: auto; width: auto; max-height: 170px;"
       alt="xpander.ai Logo"
     >
@@ -11,14 +11,13 @@
 </h3>
 
 <div align="center">
-  <h1>Joniur AI SRE Using Agno + xpander.ai + AWS MCPs</h1>
+  <h1>Junior AI SRE Using Agno + xpander.ai + AWS MCPs</h1>
 
   <a href="https://pepy.tech/projects/xpander-sdk"><img src="https://static.pepy.tech/badge/xpander-sdk/month"></a> 
   <a href="https://github.com/xpander-ai/xpander.ai/blob/main/LICENSE"><img src="https://img.shields.io/github/license/xpander-ai/xpander.ai" alt="License"></a> <a href="https://pypi.org/project/xpander-sdk"><img src="https://img.shields.io/pypi/v/xpander-sdk" alt="PyPI Version"></a> <a href="https://npmjs.com/package/xpander-sdk"><img src="https://img.shields.io/npm/v/xpander-sdk" alt="NPM Version"></a> <a href="https://app.xpander.ai"><img src="https://img.shields.io/badge/platform-login-30a46c" alt="Platform Login"></a>
 </div>
----
 
-Simple example integrating **Agno agents** with **xpander backend** and **AWS EKS MCP servers**.
+Simple example integrating **Agno agents** with **xpander backend** and **AWS EKS MCP servers**
 
 ## Quick Start
 
