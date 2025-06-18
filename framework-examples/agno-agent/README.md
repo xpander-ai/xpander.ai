@@ -1,6 +1,24 @@
-# Agno + xpander.ai + AWS MCP Example
+<h3 align="center">
+  <a name="readme-top"></a>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="images/Purple%20Logo%20White%20text.png">
+    <img
+      src="images/Purple%20Logo%20Black%20Text.png"
+      style="max-width: 100%; height: auto; width: auto; max-height: 170px;"
+      alt="xpander.ai Logo"
+    >
+  </picture>
+</h3>
 
-Simple example integrating **Agno agents** with **Xpander backend** and **AWS EKS MCP servers**.
+<div align="center">
+  <h1>Joniur AI SRE Using Agno + xpander.ai + AWS MCPs</h1>
+
+  <a href="https://pepy.tech/projects/xpander-sdk"><img src="https://static.pepy.tech/badge/xpander-sdk/month"></a> 
+  <a href="https://github.com/xpander-ai/xpander.ai/blob/main/LICENSE"><img src="https://img.shields.io/github/license/xpander-ai/xpander.ai" alt="License"></a> <a href="https://pypi.org/project/xpander-sdk"><img src="https://img.shields.io/pypi/v/xpander-sdk" alt="PyPI Version"></a> <a href="https://npmjs.com/package/xpander-sdk"><img src="https://img.shields.io/npm/v/xpander-sdk" alt="NPM Version"></a> <a href="https://app.xpander.ai"><img src="https://img.shields.io/badge/platform-login-30a46c" alt="Platform Login"></a>
+</div>
+---
+
+Simple example integrating **Agno agents** with **xpander backend** and **AWS EKS MCP servers**.
 
 ## Quick Start
 
@@ -41,7 +59,6 @@ pip install -r requirements.txt
 https://github.com/user-attachments/assets/4975ec55-617f-4c3f-9f3b-3b9cd073186f
 
 
-
 Both scripts will run in CLI mode and output results to your terminal.
 
 ### 3. Stream events (A2A, MCP, Slack, WebUI) to your agent
@@ -52,7 +69,7 @@ To enable event streaming and integration with Xpander's backend and external se
 python xpander_handler.py
 ```
 
-**Important:** Ensure you have EKS access configured correctly. Adjust the AWS profile or IAM keys in the MCP configuration as needed.
+**Important:** Ensure you have EKS access configured correctly. Adjust the AWS profile or IAM keys in the MCP configuration as needed. See [eks-iam-guide.md](./eks-iam-guide.md) for setting up read-only IAM access.
 
 ## What it does
 
@@ -65,7 +82,7 @@ python xpander_handler.py
 This example includes two agent implementations:
 
 - [`agno_agent.py`](./agno_agent.py): **Standalone Agno agent**
-- [`agno_agent_with_backend.py`](./agno_agent_with_backend.py): **Agno agent integrated with Xpander backend**
+- [`agno_agent_with_backend.py`](./agno_agent_with_backend.py): **Agno agent integrated with xpander backend**
 
 ### Standalone Agent (`agno_agent.py`)
 - Runs locally with basic state and history management.
@@ -107,8 +124,6 @@ The output shows two important URLs:
 - **Builder UI**: Use this to configure your agent settings
 
 
-https://github.com/user-attachments/assets/bdf676df-a970-4b28-8a65-9a28cbca630b
-
 
 Ask questions through the chat UI:
 - "List pods in default namespace"
@@ -119,7 +134,6 @@ One cool example
 
 <img width="961" alt="slack" src="https://github.com/user-attachments/assets/af5347d9-3cf4-41d8-a5f6-487aa53bf020" />
 <img width="915" alt="image" src="https://github.com/user-attachments/assets/06b89516-9658-4c02-a1a0-815f824e3d7d" />
-
 
 ## Deployment
 
@@ -133,5 +147,7 @@ Follow the deployment wizard to:
 - Configure your production environment
 - Set up scaling and monitoring
 - Deploy your agent to Xpander's cloud infrastructure
+
+https://github.com/user-attachments/assets/bdf676df-a970-4b28-8a65-9a28cbca630b
 
 That's it! 
