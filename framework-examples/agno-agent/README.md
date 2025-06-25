@@ -46,7 +46,7 @@ pip install -r requirements.txt
 
 ### 2. Run the agent:
 
-- **Standalone agent:**
+- **Standalone agent (Without xpander.ai backend):**
   ```bash
   python agno_agent.py
   ```

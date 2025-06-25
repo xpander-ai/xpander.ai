@@ -11,8 +11,8 @@ class AgnoAgent:
     def __init__(self):
         self.mcp_tools = MultiMCPTools(
             commands=[
-                "uvx awslabs.core-mcp-server@latest",
-                "uvx awslabs.eks-mcp-server@latest --allow-sensitive-data-access"
+                "awslabs.core-mcp-server",
+                "awslabs.eks-mcp-server --allow-sensitive-data-access"
             ], 
             env={"AWS_ACCESS_KEY_ID": os.environ["AWS_ACCESS_KEY_ID"] , "AWS_SECRET_ACCESS_KEY": os.environ["AWS_SECRET_ACCESS_KEY"], "AWS_REGION": os.environ["AWS_REGION"]}
         )

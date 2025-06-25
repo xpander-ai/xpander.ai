@@ -2,3 +2,5 @@ xpander-utils
 agno
 mcp
 openai
+awslabs-core-mcp-server
+awslabs-eks-mcp-server
