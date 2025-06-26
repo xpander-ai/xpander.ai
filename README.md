@@ -90,6 +90,16 @@ npm install -g xpander-cli
 ```bash
 xpander login
 xpander agent new
+```
+
+<img width="1062" alt="image" src="https://github.com/user-attachments/assets/a264fefe-ce22-420a-b105-9cd07b021c3e" />
+
+### Develop the agent and run it
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 python xpander_handler.py  # <-- Events with entry point for your agents
 ```
 
