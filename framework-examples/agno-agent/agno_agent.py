@@ -3,9 +3,10 @@ from dotenv import load_dotenv
 import os
 from agno.agent import Agent
 from agno.models.openai import OpenAIChat
-from agno.tools.mcp import  MultiMCPTools
+from agno.tools.mcp import MultiMCPTools
 from agno.tools.thinking import ThinkingTools
 load_dotenv()
+
 
 class AgnoAgent:
     def __init__(self):
@@ -13,18 +14,19 @@ class AgnoAgent:
             commands=[
                 "awslabs.core-mcp-server",
                 "awslabs.eks-mcp-server --allow-sensitive-data-access"
-            ], 
-            env={"AWS_ACCESS_KEY_ID": os.environ["AWS_ACCESS_KEY_ID"] , "AWS_SECRET_ACCESS_KEY": os.environ["AWS_SECRET_ACCESS_KEY"], "AWS_REGION": os.environ["AWS_REGION"]}
+            ],
+            env={"AWS_ACCESS_KEY_ID": os.environ["AWS_ACCESS_KEY_ID"], "AWS_SECRET_ACCESS_KEY":
+                 os.environ["AWS_SECRET_ACCESS_KEY"], "AWS_REGION": os.environ["AWS_REGION"]}
         )
         self.agent = None
-    
+
     async def run(self, message: str, user_id: str, session_id: str) -> str:
         """Run the agent with the given message and maintain state"""
         if self.agent is None:
             await self.mcp_tools.__aenter__()
             self.agent = Agent(
                 model=OpenAIChat(id="gpt-4.1"),
-                tools=[self.mcp_tools,ThinkingTools(add_instructions=True)],
+                tools=[self.mcp_tools, ThinkingTools(add_instructions=True)],
                 add_history_to_messages=True,
                 num_history_responses=3,
                 search_previous_sessions_history=True,
@@ -46,29 +48,30 @@ class AgnoAgent:
                 add_state_in_messages=True,
                 add_datetime_to_instructions=True,
             )
-        
+
         response = await self.agent.aprint_response(message, user_id=user_id, session_id=session_id, stream=True)
         return response
-    
+
     async def __aenter__(self):
         """Async context manager entry"""
         return self
-    
+
     async def __aexit__(self, exc_type, exc_val, exc_tb):
         """Async context manager exit"""
         if self.agent is not None:
             await self.mcp_tools.__aexit__(exc_type, exc_val, exc_tb)
-    
+
+
 if __name__ == "__main__":
-    async def main():            
+    async def main():
         async with AgnoAgent() as agno_agent:
             while True:
                 message = input("Enter a message: (type exit to exit)")
                 if message == "exit":
                     break
                 await agno_agent.run(
-                    message, 
-                    user_id="123", 
+                    message,
+                    user_id="123",
                     session_id="456"
                 )
 
