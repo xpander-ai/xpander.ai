@@ -1,0 +1,9 @@
+xpander-sdk
+agno
+xpander-utils
+python-dotenv
+asyncio
+python-dateutil
+slack-sdk
+certifi
+requests

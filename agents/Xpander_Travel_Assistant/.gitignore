@@ -1,0 +1,29 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.egg-info/
+*.log
+.mypy_cache/
+.pytest_cache/
+.vscode/
+.idea/
+.DS_Store
+.dockerignore
+Xpander_Travel_Assisstant/xpander_config.json
+Xpander_Travel_Assisstant/nn_agent_instructions.json
+Dockerfile
+*.dist-info/
+
+# Byte-compiled / optimized / DLL files
+# Distribution / packaging
+# Virtual environments
+# macOS system files
+# Editor directories and files
+# Database files
+# Docker files
