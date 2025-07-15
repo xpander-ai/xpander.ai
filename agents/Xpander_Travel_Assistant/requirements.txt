@@ -1,0 +1,11 @@
+xpander-sdk
+agno
+python-dotenv
+asyncio
+python-dateutil
+slack-sdk
+certifi
+requests
+openai
+sqlalchemy
+xpander-utils
