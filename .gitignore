@@ -14,3 +14,5 @@ __pycache_
 .vscode
 node_modules
 package-lock.json
+*.egg-info
+.venv
