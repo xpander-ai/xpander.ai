@@ -14,3 +14,6 @@ __pycache_
 .vscode
 node_modules
 package-lock.jsonagents/Xpander_Auto_PR/agent_state.db
+package-lock.json
+*.egg-info
+.venv

@@ -1,0 +1,20 @@
+functions:
+  # MCP Agno agent for Kubernetes assistance
+  mcp_agno:
+    _type: mcp_agno
+    llm_name: openai_llm # Reference to llms section
+    mcp_commands:
+    - "awslabs.core-mcp-server"
+    - "awslabs.eks-mcp-server --allow-sensitive-data-access"
+    user_id: "demo_user"
+    session_id: "demo_session"
+    description: "A Kubernetes assistant using MCP tools"
+
+llms:
+  openai_llm:
+    _type: openai
+    model: gpt-4.1
+    temperature: 0.0
+
+workflow:
+  _type: mcp_agno
