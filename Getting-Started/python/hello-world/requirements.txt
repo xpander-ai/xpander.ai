@@ -1,4 +1,4 @@
-xpander-sdk
+xpander-sdk==1.64.0
 xpander-utils
 openai
 dotenv
