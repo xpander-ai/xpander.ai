@@ -1,9 +1,0 @@
-xpander-sdk==1.64.0
-xpander-utils
-openai
-dotenv
-loguru
-asyncio
-tabulate
-python-dotenv
-requests

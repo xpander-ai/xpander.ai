@@ -27,30 +27,21 @@
 
 xpander.ai offers Backend-as-a-Service infrastructure for autonomous agents: memory, tools, multi-user state, various agent triggering options (MCP, A2A, API, Web interfaces), storage, agent-to-agent messaging — designed to support any agent framework and SDK
 
-
-## Demo
-
-
-https://github.com/user-attachments/assets/4db1fb71-b898-46f7-9b7c-2ec588b531fb
-
-
-
-| Feature | Description |
-|---------|-------------|
-| 🛠️ **Framework Flexibility** | Choose from popular frameworks like OpenAI ADK, Agno, CrewAI, LangChain, or work directly with native LLM APIs |
-| 🧰 **Tool Integration** | Access our comprehensive MCP-compatible tools library and pre-built integrations |
-| 🚀 **Scalable Hosting** | Deploy and scale your agents effortlessly on our managed infrastructure |
-| 💾 **State Management** | Opt for framework-specific local state or leverage our distributed state management system |
-| ⚡ **Real-time Events** | Harness our event streaming capabilities for Slackbots, ChatUIs, Agent2Agent communication, and Webhook integrations |
-| 🛡️ **API Guardrails** | Implement robust guardrails using our Agent-Graph-System to define and manage dependencies between API actions of tool-use |
+| Feature                     | Description                                                                                                                |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| 🛠️ **Framework Flexibility** | Choose from popular frameworks like OpenAI ADK, Agno, CrewAI, LangChain, or work directly with native LLM APIs             |
+| 🧰 **Tool Integration**      | Access our comprehensive MCP-compatible tools library and pre-built integrations                                           |
+| 🚀 **Scalable Hosting**      | Deploy and scale your agents effortlessly on our managed infrastructure                                                    |
+| 💾 **State Management**      | Opt for framework-specific local state or leverage our distributed state management system                                 |
+| ⚡ **Real-time Events**      | Harness our event streaming capabilities for Slackbots, ChatUIs, Agent2Agent communication, and Webhook integrations       |
+| 🛡️ **API Guardrails**        | Implement robust guardrails using our Agent-Graph-System to define and manage dependencies between API actions of tool-use |
 
 By abstracting away infrastructure complexity, xpander.ai empowers you to focus on what matters most: building intelligent, effective, production-ready AI agents.
 
-## ⭐ Featured template - fully-featured cloud-based SWE agent
+## ⭐ Featured template - fully-featured cloud-based SWE agent with Claude Code
 
-1. Login to https://app.xpander.ai and go to the Templates section  
-2. Deploy the Coding agent  
-3. Send tasks to the agent.  
+1. [Template url](https://app.xpander.ai/templates/f3240158-28ca-4c8b-96c8-a215246002dc)
+2. Send tasks to the agent.  
 Examples:  
      ```
      Clone the <my-repo-name> repo and add the following feature to the codebase ..., then create a PR with the new code.
@@ -58,7 +49,7 @@ Examples:
      ```
      Find all open PRs that have been waiting on review for more than 3 days.
      ```
-4. Continue customizing, adding tools, configure triggering (MCP, A2A, Webhooks), multi-agent collaboration, and more.
+3. Continue customizing, adding tools, configure triggering (MCP, A2A, Webhooks), multi-agent collaboration, and more.
 
 
 <picture>
@@ -114,42 +105,19 @@ xpander dev
 Add one line of code to xpander_handler.py and your agent will be accessible via Agent2Agent, Slackbots, MCP servers, or WebUI.
 
 ```python xpander.handler.py
-on_execution_request(execution_task: AgentExecution) -> AgentExecutionResult:
-  your_agent.invoke(execution_task.input.text)
-  return AgentExecutionResult(
-        result="your-agent-result",
-        is_success=True,
-    ) 
-```
+from xpander_sdk import Task, Backend, on_task
+from agno.agent import Agent
 
-### (Optional but highly recommended): Instrument your agent with AI tools and state management
+# Stateful agent, zero infrastructure overhead
+@on_task
+async def handle_task(task: Task):
+  backend = Backend() # DB, MCP tools, system prompt
+  agent = Agent(**await backend.aget_args())
 
-```python
-from xpander_sdk import XpanderClient, Agent
-
-# Init the clients
-xpander_client = XpanderClient(api_key="YOUR_XPANDER_API_KEY")
-agent_backend : Agent = xpander_client.agents.get(agent_id="YOUR_AGENT_ID")  
-
-# Initializing a new task creates a new conversation thread with empty agent state
-xpander_agent.add_task("What can you do?")
-
-response = openai_client.chat.completions.create(
-      model="gpt-4o", 
-      messages=agent_backend.messages,  # <-- Automatically loads the current state in the LLM format
-      tools=agent_backend.get_tools(),  ## <-- Automatically loads all the tool schemas from the cloud
-      tool_choice=agent_backend.tool_choice,
-      temperature=0.0
-  )
-        
-# Save the LLM Current state
-agent.add_messages(response.model_dump())
-
-# Extract the tools requested by the AI Model
-tool_calls = XpanderClient.extract_tool_calls(llm_response=response.model_dump())
-
-# Execute tools automatically and securely in the cloud after validating schema and loading user overrides and authentication
-agent.run_tools(tool_calls=tool_calls)
+  # Task includes user data + events from Slack, webhooks, agents
+  result = await agent.arun(message=task.to_message())
+  task.result = result.content
+  return task
 ```
 
 ### Deploy agent to the cloud
@@ -159,84 +127,9 @@ xpander deploy  # Will deploy the Docker container to the cloud and run it via t
 xpander logs    # Will stream logs locally from the agent configured locally
 ```
 
-## 🌟 Featured Open Source AI Agents Using xpander.ai
-
-<table>
-  <tr>
-    <th>Project</th>
-    <th>Description</th>
-    <th>License</th>
-    <th>Tech Stack</th>
-    <th>Link</th>
-  </tr>
-    <tr>
-    <td>☸️ Agno EKS Agent</td>
-    <td>Kubernetes operations agent with Agno framework, xpander backend, and AWS EKS MCP servers</td>
-    <td>Apache 2.0</td>
-    <td>Python, Agno, AWS EKS, MCP</td>
-    <td><a href="https://github.com/xpander-ai/xpander.ai/tree/main/framework-examples/agno-agent">Repo</a></td>
-  </tr>
-  <tr>
-    <td>💻 Coding Agent</td>
-    <td>Framework-agnostic agent that reads, writes, and commits code to Git repositories</td>
-    <td>MIT</td>
-    <td>Python, OpenAI, Anthropic, Gemini, Llama 3</td>
-    <td><a href="https://github.com/xpander-ai/coding-agent">Repo</a></td>
-  </tr>
-  <tr>
-    <td>🎥 NVIDIA Meeting Recorder</td>
-    <td>AI assistant that records, transcribes, and extracts insights from meetings</td>
-    <td>Apache 2.0</td>
-    <td>Python, NVIDIA SDKs, Speech Recognition</td>
-    <td><a href="https://github.com/xpander-ai/nvidia-meeting-recorder-agent">Repo</a></td>
-  </tr>
-</table>
-
 ## 🧩 Getting Started Examples
 
-The repository provides comprehensive examples to help you build AI agents with xpander.ai:
-
-### Hello World Examples
-
-Choose your preferred language to get started:
-
-#### 🐍 Python Example
-`Getting-Started/python/hello-world/` - A comprehensive Python implementation demonstrating:
-
-```
-python/hello-world/
-├── app.py                      # CLI entry point for the agent
-├── my_agent.py                 # Main agent implementation
-├── my_agent.ipynb              # Jupyter notebook version
-├── xpander_handler.py          # Event handler for platform events
-├── agent_instructions.json     # Agent persona configuration
-├── xpander_config.json         # API credentials configuration
-├── Dockerfile                  # Container definition for deployment
-├── providers/
-│   ├── ai_frameworks/          # Framework integrations
-│   └── llms/                   # LLM provider implementations
-│       └── openai/             # OpenAI specific implementation
-└── tools/
-    ├── local_tools.py          # Custom tool implementations
-    └── async_function_caller.py # Async function caller utility
-```
-
-#### 🟨 Node.js Example
-`Getting-Started/node/hello-world/` - A Node.js implementation with camelCase conventions:
-
-```
-node/hello-world/
-├── app.js                      # Main application entry point
-├── MyAgent.js                  # Agent implementation class
-├── package.json                # Node.js dependencies and scripts
-├── xpander_config.json         # Xpander API configuration
-├── agent_instructions.json     # Agent role and instructions
-└── env.template               # Environment variables template
-```
-
-See individual README files in each directory for detailed setup instructions:
-- [Python Hello World](Getting-Started/python/hello-world/README.md)
-- [Node.js Hello World](Getting-Started/node/hello-world/README.md)
+[simple-hello-world](https://docs.xpander.ai/Examples/01-simple-hello-world)
 
 ## 📚 Documentation & Resources
 
