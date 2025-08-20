@@ -23,12 +23,20 @@ source .venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 
-xpander agent dev ## Runs the agent locally
+## Creates new backend configuration
+xpander agent new --name "devops-agent" --framework "agno"
+
+## Downloads the backend configurtion locally
+xpander agent init "devops-agent"
+
+## Runs the agent locally
+xpander agent dev
 ```
 
 ## Example Usage
 
 Ask the agent questions like:
+
 - "How many EKS clusters do I have in us-west-2?"
 - "How much does my production cluster cost?"
 - "How do I configure EKS in multi-region?"
