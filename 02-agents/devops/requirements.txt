@@ -1,0 +1,6 @@
+python-dotenv
+agno[all]
+xpander-sdk[agno]
+openai
+anthropic
+mcp
