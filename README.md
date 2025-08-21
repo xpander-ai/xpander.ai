@@ -11,7 +11,7 @@
 </h3>
 
 <div align="center">
-  <h1>A framework-agnostic Backend for your AI Agents</h1>
+  <h1>Backend for AI Agents</h1>
 
   <a href="https://pepy.tech/projects/xpander-sdk"><img src="https://static.pepy.tech/badge/xpander-sdk/month"></a> 
   <a href="https://github.com/xpander-ai/xpander.ai/blob/main/LICENSE"><img src="https://img.shields.io/github/license/xpander-ai/xpander.ai" alt="License"></a> <a href="https://pypi.org/project/xpander-sdk"><img src="https://img.shields.io/pypi/v/xpander-sdk" alt="PyPI Version"></a> <a href="https://npmjs.com/package/xpander-sdk"><img src="https://img.shields.io/npm/v/xpander-sdk" alt="NPM Version"></a> <a href="https://app.xpander.ai"><img src="https://img.shields.io/badge/platform-login-30a46c" alt="Platform Login"></a>
@@ -25,7 +25,9 @@
 
 ---
 
-xpander.ai offers Backend-as-a-Service infrastructure for autonomous agents: memory, tools, multi-user state, various agent triggering options (MCP, A2A, API, Web interfaces), storage, agent-to-agent messaging — designed to support any agent framework and SDK
+xpander.ai is Backend-as-a-Service for autonomous agents. It abstracts the ops layer so AI engineers focus on behavior and outcomes. You get managed agent hosting with version control and CI/CD, a fully managed PostgreSQL memory layer, and a curated library of 2,000+ functions, including MCP Tools and the MCP Generator.
+
+Our AI native triggering system post-processes inputs from MCP, agent-to-agent, API, and web, then delivers a single unified message to your agent so you never deal with wiring or formats. xpander works with any agent framework or SDK, with native support for Agno and OpenAI.
 
 | Feature                     | Description                                                                                                                |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------- |

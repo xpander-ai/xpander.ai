@@ -19,8 +19,9 @@ async def initialize_mcp():
 
     mcp_tools = MultiMCPTools(
         commands=[
+            # Knowledge MCP
             "uvx mcp-proxy --transport streamablehttp https://knowledge-mcp.global.api.aws",
-            "uvx awslabs.aws-api-mcp-server"
+            # "uvx awslabs.aws-api-mcp-server" # Uncomment if you want the agent to access the AWS CLI
         ],
         env={
             "AWS_ACCESS_KEY_ID": os.environ.get("PROD_AWS_ACCESS_KEY_ID"),
