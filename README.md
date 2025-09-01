@@ -13,6 +13,14 @@
 <div align="center">
   <h1>Backend for AI Agents</h1>
 
+<div align="center">
+<hr/>
+  <h2>🎉 <strong>We're LIVE on Product Hunt!</strong> 🎉</h2>
+  <p><strong>Support us today and help us reach #1!</strong></p>
+  <a href="https://www.producthunt.com/products/xpander-ai/launches/xpander-ai-full-stack-for-ai-engineers?embed=true&utm_source=xpander.ai repo&utm_medium=badge&utm_source=badge-ph-xpander.ai-repo" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1009903&theme=light&t=1756718985789" alt="Backend and Frontend for your AI Agents | Product Hunt" style="width: 220px; height: 54px;" width="250" height="54" /></a>
+  <p>👆 <em>Click to upvote and leave a comment!</em></p>
+</div>
+
   <a href="https://pepy.tech/projects/xpander-sdk"><img src="https://static.pepy.tech/badge/xpander-sdk/month"></a> 
   <a href="https://github.com/xpander-ai/xpander.ai/blob/main/LICENSE"><img src="https://img.shields.io/github/license/xpander-ai/xpander.ai" alt="License"></a> <a href="https://pypi.org/project/xpander-sdk"><img src="https://img.shields.io/pypi/v/xpander-sdk" alt="PyPI Version"></a> <a href="https://npmjs.com/package/xpander-sdk"><img src="https://img.shields.io/npm/v/xpander-sdk" alt="NPM Version"></a> <a href="https://app.xpander.ai"><img src="https://img.shields.io/badge/platform-login-30a46c" alt="Platform Login"></a>
 </div>
