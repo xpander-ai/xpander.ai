@@ -19,8 +19,7 @@
 
 <div align="center">
 <hr/>
-  <h3> <strong>We're LIVE on Product Hunt!</strong></h3>
-  <p><strong>🥇Daily 1st place - secured!🥇</strong></p>
+  <p><strong>🥇1st place - Product of the day🥇</strong></p>
   <a href="https://www.producthunt.com/products/xpander-ai?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_source=badge-xpander&#0045;ai&#0045;2" target="_blank">
     <img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1009903&theme=light&period=daily&t=1756801389318" alt="xpander&#0046;ai - Backend&#0032;and&#0032;Frontend&#0032;for&#0032;your&#0032;AI&#0032;Agents | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
   </a>
