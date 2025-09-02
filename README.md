@@ -19,11 +19,14 @@
 
 <div align="center">
 <hr/>
-  <h3>🎉 <strong>We're LIVE on Product Hunt!</strong> 🎉</h3>
-  <p><strong>Support us today and help us reach #1!</strong></p>
-  <a href="https://www.producthunt.com/products/xpander-ai/launches/xpander-ai-full-stack-for-ai-engineers?embed=true&utm_source=xpander.ai repo&utm_medium=badge&utm_source=badge-ph-xpander.ai-repo" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1009903&theme=light&t=1756718985789" alt="Backend and Frontend for your AI Agents | Product Hunt" style="width: 220px; height: 54px;" width="250" height="54" /></a>
-  <p>👆 <em>Click to upvote and leave a comment!</em></p>
+  <h3> <strong>We're LIVE on Product Hunt!</strong></h3>
+  <p><strong>🥇Daily 1st place - secured!🥇</strong></p>
+  <a href="https://www.producthunt.com/products/xpander-ai?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_source=badge-xpander&#0045;ai&#0045;2" target="_blank">
+    <img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1009903&theme=light&period=daily&t=1756801389318" alt="xpander&#0046;ai - Backend&#0032;and&#0032;Frontend&#0032;for&#0032;your&#0032;AI&#0032;Agents | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
+  </a>
+  <p>👆 <em>Click to upvote and leave a comment, so we can win the weekly #1 spot as well!</em></p>
 </div>
+
 
 <div align="center">
   <a href="https://pepy.tech/projects/xpander-sdk"><img src="https://static.pepy.tech/badge/xpander-sdk/month"></a> 
