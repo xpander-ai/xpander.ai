@@ -49,8 +49,8 @@ XPANDER_AGENT_ID="your_agent_id"
 
 **Where to find your xpander.ai credentials:**
 
-1. **API Key**: Go to [xpander.ai Settings](https://app.xpander.ai/settings) → API Keys
-2. **Organization ID**: Found in your organization settings or URL
+1. **API Key**: Go to [xpander.ai Settings](https://app.xpander.ai) → Settings → API Keys
+2. **Organization ID**: Found in your organization id and API Key
 3. **Agent ID**: Create or select an agent in the xpander.ai platform
 
 ### Run the Example
