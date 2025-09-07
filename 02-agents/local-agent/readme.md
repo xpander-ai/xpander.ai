@@ -108,8 +108,7 @@ from agno.models.ollama import Ollama
 @on_task  # SSE event listener for tasks from any source
 async def my_agent_handler(task: Task):
     backend = Backend(configuration=task.configuration)
-    agno_args = await backend.aget_args(task=task)
-    
+   
     # Configure agent with local Ollama model
     agno_agent = Agent(**backend.get_args(override={
         'model': Ollama(id="gpt-oss:20b")  # Local model
