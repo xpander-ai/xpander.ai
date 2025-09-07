@@ -1,0 +1,5 @@
+python-dotenv
+agno[all]
+xpander-sdk[agno]
+ollama
+openai
