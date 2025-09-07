@@ -39,14 +39,25 @@ Configure your agent to use local Ollama models in `xpander_handler.py`:
 ```python
 ...
 from agno.models.ollama import Ollama
-...
 
-agno_agent = Agent(**backend.get_args(override={
-    'model': Ollama(id="gpt-oss:20b")
-}))
+@on_task  # SSE event listener for tasks from any source
+async def my_agent_handler(task: Task):   
+    # Configure agent with local Ollama model
+    agno_agent = Agent(**backend.get_args(override={
+        'model': Ollama(id="gpt-oss:20b")  # Local model
+    }))
 ```
 
-## Usage
+**Key Architecture Points:**
+
+- `@on_task` decorator receives events via Server-Sent Events (SSE)
+- Tasks can originate from WebUI, Slack, API calls, or any configured source
+- Agent handles all task routing and infrastructure automatically
+- System prompts and configuration managed via app.xpander.ai dashboard
+
+## Running the Agent
+
+### Local Development
 
 ```bash
 # Local development
@@ -82,10 +93,3 @@ Access [app.xpander.ai](https://app.xpander.ai) for:
 ✅ Usage metrics and monitoring  
 ✅ Multi-source task routing  
 ✅ Conversation history (Optional)
-
-## Requirements
-
-- Python 3.8+
-- Ollama with local models
-- Docker (optional)
-- xpander.ai CLI
