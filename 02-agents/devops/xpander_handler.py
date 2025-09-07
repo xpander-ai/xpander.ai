@@ -21,7 +21,9 @@ async def initialize_mcp():
         commands=[
             # Knowledge MCP
             "uvx mcp-proxy --transport streamablehttp https://knowledge-mcp.global.api.aws",
-            # "uvx awslabs.aws-api-mcp-server" # Uncomment if you want the agent to access the AWS CLI
+            "uvx awslabs.aws-api-mcp-server",
+            # EKS MCP
+            "uvx awslabs.eks-mcp-server --allow-sensitive-data-access"
         ],
         env={
             "AWS_ACCESS_KEY_ID": os.environ.get("PROD_AWS_ACCESS_KEY_ID"),
@@ -48,7 +50,6 @@ async def my_agent_handler(task: Task):
         logger.info("⚠️  No MCP tools available")
 
     agno_agent = Agent(**agno_args)
-
     result = await agno_agent.arun(message=task.to_message())
 
     # in case of structured output, return as stringified json
