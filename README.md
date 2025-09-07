@@ -11,8 +11,23 @@
 </h3>
 
 <div align="center">
-  <h1>Backend for AI Agents</h1>
+  <h3>
+    <font size="7">Full-stack platform for AI Agents</font>
+  </h3>
+</div>
 
+
+<div align="center">
+<hr/>
+  <p><strong>🥇1st place - Product of the day🥇</strong></p>
+  <a href="https://www.producthunt.com/products/xpander-ai?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_source=badge-xpander&#0045;ai&#0045;2" target="_blank">
+    <img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1009903&theme=light&period=daily&t=1756801389318" alt="xpander&#0046;ai - Backend&#0032;and&#0032;Frontend&#0032;for&#0032;your&#0032;AI&#0032;Agents | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
+  </a>
+  <p>👆 <em>Click to upvote and leave a comment, so we can win the weekly #1 spot as well!</em></p>
+</div>
+
+
+<div align="center">
   <a href="https://pepy.tech/projects/xpander-sdk"><img src="https://static.pepy.tech/badge/xpander-sdk/month"></a> 
   <a href="https://github.com/xpander-ai/xpander.ai/blob/main/LICENSE"><img src="https://img.shields.io/github/license/xpander-ai/xpander.ai" alt="License"></a> <a href="https://pypi.org/project/xpander-sdk"><img src="https://img.shields.io/pypi/v/xpander-sdk" alt="PyPI Version"></a> <a href="https://npmjs.com/package/xpander-sdk"><img src="https://img.shields.io/npm/v/xpander-sdk" alt="NPM Version"></a> <a href="https://app.xpander.ai"><img src="https://img.shields.io/badge/platform-login-30a46c" alt="Platform Login"></a>
 </div>
