@@ -83,9 +83,12 @@ cp .env.example .env
 # Edit .env with your credentials (see Configuration section below)
 ```
 
-### Step 5: Deploy and Test
+### Step 5: Test and Deploy
 
 ```bash
+# Run the event listener and test using the xpander platform
+xpander dev
+
 # Deploy to xpander.ai cloud
 xpander deploy
 
@@ -155,7 +158,7 @@ nat run --config_file nemo_config.yml --input "I'm 30, earn $80k, want to retire
 
 ### 2. Event Listener (Production)
 ```bash
-python xpander_handler.py
+xpander dev
 ```
 Automatically processes xpander.ai tasks as they arrive.
 
