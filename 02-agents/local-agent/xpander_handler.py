@@ -9,7 +9,6 @@ from agno.models.ollama import Ollama
 @on_task
 async def my_agent_handler(task: Task):
     backend = Backend(configuration=task.configuration)
-    
     agno_agent = Agent(**backend.get_args(override={
     'model': Ollama(id="gpt-oss:20b")
     }))
