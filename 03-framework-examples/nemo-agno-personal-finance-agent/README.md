@@ -42,20 +42,18 @@ xpander agent new
 #### Option B: Using xpander.ai Web Interface
 
 1. Go to [app.xpander.ai](https://app.xpander.ai)
-2. Click **"Create New Agent"** 
-3. Select **Agent Framework**:
+2. Click **"Create New Agent"**
+  - **Name**: `financial-planner` (or your preferred name)
+4. Select **Agent Framework**:
    - Choose **"Agno + Nvidia NeMo"** (lightning-fast, model-agnostic framework)
-4. Configure Agent Settings:
-   - **Name**: `financial-planner` (or your preferred name)
+5. Click **"Create Agent"**
+6. Configure Agent Settings:
    - **Description**: `Personal Financial Planning Agent with AI Research`
    - **System Instructions**: 
      ```
      You are a professional financial planning assistant that helps users create personalized financial plans. You combine web research with expert financial planning knowledge to provide comprehensive, actionable advice on budgeting, investing, saving, and achieving financial goals.
      ```
-5. Add Required Tools:
-   - **Web Search Tool** (SERP API) - for financial research
-   - Configure with your SERP API key
-6. Click **"Create Agent"**
+7. Click **"Deploy Agent"**
 
 > 💡 **Note**: The web interface provides a more visual setup experience and automatically configures some defaults for you.
 
