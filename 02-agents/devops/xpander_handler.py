@@ -21,7 +21,8 @@ async def initialize_mcp():
         commands=[
             # Knowledge MCP
             "uvx mcp-proxy --transport streamablehttp https://knowledge-mcp.global.api.aws",
-            # "uvx awslabs.aws-api-mcp-server" # Uncomment if you want the agent to access the AWS CLI
+            "uvx awslabs.aws-api-mcp-server", # Uncomment if you want the agent to access the AWS CLI
+            "uvx awslabs.eks-mcp-server --allow-sensitive-data-access"
         ],
         env={
             "AWS_ACCESS_KEY_ID": os.environ.get("PROD_AWS_ACCESS_KEY_ID"),

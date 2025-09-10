@@ -1,0 +1,64 @@
+# Use Alpine-based Python image
+FROM python:3.12-alpine AS builder
+
+# Set working directory
+WORKDIR /usr/src/app
+
+# Install dependencies (including Node.js and npm directly)
+RUN apk add --no-cache \
+    curl \
+    bash \
+    gcc \
+    g++ \
+    libffi-dev \
+    musl-dev \
+    openssl-dev \
+    make \
+    python3-dev \
+    rust \
+    cargo \
+    git \
+    nodejs \
+    npm \
+    ca-certificates
+
+# Copy app files
+COPY . .
+
+# Create and activate virtualenv
+RUN python3 -m venv .venv
+
+# Add virtual environment to PATH
+ENV PATH="/usr/src/app/.venv/bin:$PATH"
+
+# Install Python dependencies
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+RUN apk add --no-cache coreutils
+RUN apk add --no-cache gcc g++ musl-dev python3-dev cargo
+
+FROM python:3.12-alpine
+
+WORKDIR /usr/src/app
+
+# system deps you already had, keep curl here since we use it to install uv
+RUN apk add --no-cache \
+    curl bash gcc g++ libffi-dev musl-dev openssl-dev make
+
+# do NOT create a venv in containers unless you really need it
+# install python deps into the image directly
+COPY requirements.txt .
+RUN python -m pip install --upgrade pip \
+ && pip install --no-cache-dir -r requirements.txt
+
+# install uv (provides uvx) on Alpine
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+ENV PATH="/root/.local/bin:${PATH}"
+RUN ln -sf /root/.local/bin/uv /usr/local/bin/uv \
+ && ln -sf /root/.local/bin/uvx /usr/local/bin/uvx
+
+# copy app last for better layer caching
+COPY . .
+
+# Run the xpander handler
+CMD ["python", "xpander_handler.py"]

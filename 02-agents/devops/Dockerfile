@@ -1,39 +1,32 @@
-# Use Alpine-based Python image
-FROM python:3.12-alpine AS builder
+# Use Debian-based Python so torch wheels resolve
+FROM python:3.12-slim
 
-# Set working directory
 WORKDIR /usr/src/app
 
-# Install dependencies (including Node.js and npm directly)
-RUN apk add --no-cache \
-    curl \
-    bash \
-    gcc \
-    g++ \
-    libffi-dev \
-    musl-dev \
-    openssl-dev \
-    make \
-    python3-dev \
-    rust \
-    cargo \
-    git \
-    nodejs \
-    npm \
-    ca-certificates
+# Base OS deps
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl ca-certificates build-essential git \
+ && rm -rf /var/lib/apt/lists/*
 
-# Copy app files
+# Install uv (which provides uvx) and put it on PATH
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+ENV PATH="/root/.local/bin:${PATH}"
+RUN ln -sf /root/.local/bin/uv /usr/local/bin/uv \
+ && ln -sf /root/.local/bin/uvx /usr/local/bin/uvx
+
+# Install Python deps
+COPY requirements.txt .
+RUN python -m pip install --upgrade pip \
+ && pip install --no-cache-dir -r requirements.txt
+
+# Copy app after deps for better caching
 COPY . .
 
-# Create and activate virtualenv
-RUN python3 -m venv .venv
+# Optional: pre-warm the MCP server so first boot does not resolve at runtime.
+# Replace the package name if you use a different MCP server.
+# This will fail fast at build time if torch cannot resolve, which is what we want.
+RUN uvx --from awslabs-aws-api-mcp-server --help || true
 
-# Add virtual environment to PATH
-ENV PATH="/usr/src/app/.venv/bin:$PATH"
-
-# Install Python dependencies
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
-
-# Run the xpander handler
+# Run your app
 CMD ["python", "xpander_handler.py"]
+
