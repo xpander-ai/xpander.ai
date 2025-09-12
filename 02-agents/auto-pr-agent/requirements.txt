@@ -1,0 +1,5 @@
+python-dotenv
+agno[all]
+xpander-sdk[agno]
+httpx>=0.27
+openai
