@@ -85,7 +85,7 @@ Examples:
 pip install xpander-sdk
 
 # Node.js
-npm install @xpander-ai/sdk
+npm install xpander-sdk
 
 # CLI (for agent creation)
 npm install -g xpander-cli
