@@ -59,6 +59,10 @@ xpander agent new
 
 > 💡 **Note**: The web interface provides a more visual setup experience and automatically configures some defaults for you.
 
+#### Example of Nvidia Nemotron model configuration in the xpander.ai Web Interface
+![nemotron-config](./nemotron2.png)
+
+
 ### Step 3: Set up the Financial Agent Code
 
 ```bash
