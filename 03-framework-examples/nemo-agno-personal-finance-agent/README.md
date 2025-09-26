@@ -39,6 +39,8 @@ xpander agent new
 # - Agent name: "financial-planner" (or your preferred name)
 ```
 
+
+
 #### Option B: Using xpander.ai Web Interface
 
 1. Go to [app.xpander.ai](https://app.xpander.ai)
@@ -165,8 +167,8 @@ Automatically processes xpander.ai tasks as they arrive.
 ### Required Accounts & API Keys
 
 1. **[xpander.ai Account](https://app.xpander.ai)** - Free account required for agent hosting
-2. **OpenAI API Key** - For GPT models ([get here](https://platform.openai.com/api-keys))
-   - Alternative: Anthropic API Key for Claude models
+2. **Nvidia Build API Key** - for Nemotron models ([get here](https://build.nvidia.com/)) 
+   - Alternative: Anthropic or OpenAI API Keys
 3. **SERP API Key** - For web search functionality ([sign up here](https://serpapi.com/users/sign_up))
 4. **Python 3.11+** - For local development
 
@@ -218,7 +220,8 @@ XPANDER_ORGANIZATION_ID="your_org_id"
 XPANDER_AGENT_ID="your_agent_id"
 
 # LLM API (choose one)
-OPENAI_API_KEY="your_openai_key"
+NVIDIA_API_KEY="your_nvidia_key"
+#OPENAI_API_KEY="your_openai_key"
 # ANTHROPIC_API_KEY="your_anthropic_key"
 
 # SERP API for web search (required)
@@ -367,14 +370,14 @@ functions:
     api_key: ${SERP_API_KEY}
 
 llms:
-  openai:
-    _type: openai
-    model_name: gpt-4.1
+  nvidia:
+    _type: nvidia
+    model_name: nvidia/llama-3.1-nemotron-ultra-253b-v1 # Use the Nemotron model with inferencing on the the Nvidia Build platform
     temperature: 0
 
 workflow:
   _type: xpander_nemo_agent
-  llm_name: openai
+  llm_name: nvidia
   tools: [web_search_tool]  # Essential for financial research
   verbose: false
   retry_parsing_errors: true
@@ -413,7 +416,7 @@ agno-finance-agent/
 │                           # - Processes xpander.ai tasks
 │                           # - Spawns NAT workflows
 ├── nemo_config.yml          # NeMo configuration
-│                           # - LLM settings (OpenAI/Anthropic)
+│                           # - LLM settings (Nvidia/OpenAI/Anthropic)
 │                           # - SERP API tool configuration
 │                           # - Workflow parameters
 ├── pyproject.toml           # Dependencies and build config
@@ -611,11 +614,6 @@ This enhanced version builds upon NVIDIA's excellent foundation:
 - NVIDIA NeMo: [NeMo toolkit documentation](https://docs.nvidia.com/nemo-framework/)
 - Agno Framework: [github.com/agno-agi/agno](https://github.com/agno-agi/agno)
 - Original NVIDIA Example: [NeMo-Agent-Toolkit](https://github.com/NVIDIA/NeMo-Agent-Toolkit/tree/develop/examples/frameworks/agno_personal_finance)
-
-**API Documentation**:
-- SERP API: [serpapi.com/search-api](https://serpapi.com/search-api)
-- OpenAI API: [platform.openai.com/docs](https://platform.openai.com/docs)
-- Anthropic API: [docs.anthropic.com](https://docs.anthropic.com)
 
 ---
 
