@@ -130,7 +130,7 @@ async def my_agent_handler(task: Task):
     credit_redemption = payments_subscriber.requests.redeem_credits_from_request(
         agent_request_id,
         access_token,
-        10,
+        10,     # This is the number of credits to redeem
     )
     logger.info(f"💰 Credit redemption: {credit_redemption}")
 
