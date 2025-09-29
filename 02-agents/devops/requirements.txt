@@ -4,3 +4,4 @@ xpander-sdk[agno]
 openai
 anthropic
 mcp
+payments-py
