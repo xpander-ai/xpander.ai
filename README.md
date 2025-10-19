@@ -12,153 +12,188 @@
 
 <div align="center">
   <h3>
-    <font size="7">Full-stack platform for AI Agents</font>
+    <font size="7">⚡️ Build, run, and ship agents — any framework, anywhere</font>
   </h3>
-</div>
-
-
-<div align="center">
-<hr/>
-  <a href="https://www.producthunt.com/products/xpander-ai?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_source=badge-xpander&#0045;ai&#0045;2" target="_blank">
-    <img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1009903&theme=light&period=daily&t=1756801389318" alt="xpander&#0046;ai - Backend&#0032;and&#0032;Frontend&#0032;for&#0032;your&#0032;AI&#0032;Agents | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
-  </a>
-</div>
-
-
-<div align="center">
-  <a href="https://pepy.tech/projects/xpander-sdk"><img src="https://static.pepy.tech/badge/xpander-sdk/month"></a> 
-  <a href="https://github.com/xpander-ai/xpander.ai/blob/main/LICENSE"><img src="https://img.shields.io/github/license/xpander-ai/xpander.ai" alt="License"></a> <a href="https://pypi.org/project/xpander-sdk"><img src="https://img.shields.io/pypi/v/xpander-sdk" alt="PyPI Version"></a> <a href="https://npmjs.com/package/xpander-sdk"><img src="https://img.shields.io/npm/v/xpander-sdk" alt="NPM Version"></a> <a href="https://app.xpander.ai"><img src="https://img.shields.io/badge/platform-login-30a46c" alt="Platform Login"></a>
-</div>
-
-<div align="center">
-  <p align="center">
-<a href="https://x.com/xpander_ai"><img src="https://img.shields.io/badge/Follow%20on%20X-000000?style=for-the-badge&logo=x&logoColor=white" alt="Follow on X" /></a> <a href="https://www.linkedin.com/company/xpander-ai"><img src="https://img.shields.io/badge/Follow%20on%20LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a> <a href="https://discord.gg/CUcp4WWh5g"><img src="https://img.shields.io/badge/Join%20our%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+  <p>
+    💬 Chat • 🧪 Workbench • 🏗️ AgentOS • 🗄️ DB • 🚦 CI/CD • 🔐 Self-Hosted • 🧑‍💻 Full code access
   </p>
+</div>
+
+<div align="center">
+  <a href="https://pepy.tech/projects/xpander-sdk"><img src="https://static.pepy.tech/badge/xpander-sdk/month" alt="xpander-sdk downloads"></a>
+  <a href="https://github.com/xpander-ai/xpander.ai/blob/main/LICENSE"><img src="https://img.shields.io/github/license/xpander-ai/xpander.ai" alt="License"></a>
+  <a href="https://pypi.org/project/xpander-sdk"><img src="https://img.shields.io/pypi/v/xpander-sdk" alt="PyPI Version"></a>
+  <a href="https://npmjs.com/package/xpander-sdk"><img src="https://img.shields.io/npm/v/xpander-sdk" alt="NPM Version"></a>
+  <a href="https://app.xpander.ai"><img src="https://img.shields.io/badge/platform-login-30a46c" alt="Platform Login"></a>
 </div>
 
 ---
 
-xpander.ai is Backend-as-a-Service for autonomous agents. It abstracts the ops layer so AI engineers focus on behavior and outcomes. You get managed agent hosting with version control and CI/CD, a fully managed PostgreSQL memory layer, and a curated library of 2,000+ functions, including MCP Tools and the MCP Generator.
+<div align="center">
+  <a href="https://chat.xpander.ai">Chat</a>
+  • <a href="https://docs.xpander.ai">Docs</a>
+  • <a href="#examples">Examples</a>
+  • <a href="https://xpander.ai">Website</a>
+</div>
 
-Our AI native triggering system post-processes inputs from MCP, agent-to-agent, API, and web, then delivers a single unified message to your agent so you never deal with wiring or formats. xpander works with any agent framework or SDK, with native support for Agno and OpenAI.
+---
 
-| Feature                     | Description                                                                                                                |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| 🛠️ **Framework Flexibility** | Choose from popular frameworks like OpenAI ADK, Agno, CrewAI, LangChain, or work directly with native LLM APIs             |
-| 🧰 **Tool Integration**      | Access our comprehensive MCP-compatible tools library and pre-built integrations                                           |
-| 🚀 **Scalable Hosting**      | Deploy and scale your agents effortlessly on our managed infrastructure                                                    |
-| 💾 **State Management**      | Opt for framework-specific local state or leverage our distributed state management system                                 |
-| ⚡ **Real-time Events**      | Harness our event streaming capabilities for Slackbots, ChatUIs, Agent2Agent communication, and Webhook integrations       |
-| 🛡️ **API Guardrails**        | Implement robust guardrails using our Agent-Graph-System to define and manage dependencies between API actions of tool-use |
+xpander.ai is the runtime and control plane to build, run, and ship reliable AI agents fast. Start in Chat to use your agents immediately. Deploy Managed Agents (serverless) or Embedded Agents (containers). Add tools in Workbench. Run in xpander cloud or your own VPC/Kubernetes. Every agent gets a stateful DB, CI/CD, and logs — with full code access. Works with any framework.
 
-By abstracting away infrastructure complexity, xpander.ai empowers you to focus on what matters most: building intelligent, effective, production-ready AI agents.
+## 🧰 The xpander.ai Platform (at a glance)
 
-## ⭐ Featured template - fully-featured cloud-based SWE agent with Claude Code
+💬 Chat (chat.xpander.ai) — Generalist AI agent that auto‑discovers your agents and can schedule tasks. It’s the front door for everyone to use your agents and tools (supports your own domain and self‑hosting).
 
-1. [Template url](https://app.xpander.ai/templates/f3240158-28ca-4c8b-96c8-a215246002dc)
-2. Send tasks to the agent.  
-Examples:  
-     ```
-     Clone the <my-repo-name> repo and add the following feature to the codebase ..., then create a PR with the new code.
-     ```
-     ```
-     Find all open PRs that have been waiting on review for more than 3 days.
-     ```
-3. Continue customizing, adding tools, configure triggering (MCP, A2A, Webhooks), multi-agent collaboration, and more.
+🧪 Workbench (app.xpander.ai) — Your control plane for any agent framework. Start with the Starter Kit template, then add tools from the menu: MCP servers, connectors, built‑in actions, or custom actions.
 
+🏗️ AgentOS — Deploy agents of any framework on a production runtime in your VPC/Kubernetes or in xpander cloud; includes a reliable task scheduler and orchestration for long‑running jobs, plus stateful DB, logs, secrets, observability, and CI/CD.
 
-<picture>
-    <source media="(prefers-color-scheme: dark)" srcset="images/codingagent2.png">
-    <img
-      src="images/codingagent2.png"
-      style="max-width: 100%; height: auto; width: auto; max-height: 170px;"
-      alt="xpander.ai Logo"
-    >
-  </picture>
+🔌 Connector Hub — Generate and run MCP servers from OpenAPI specs or use the built‑in library of 2,000+ tools. Supports OAuth and API keys, and integrates natively with Claude, ChatGPT, and other MCP clients.
 
-## Adding a backend to your agents in less than 5 minutes
+🛠️ AI Tools — OCR, browser automation, code interpreter, serverless code runner, PDF/CSV utilities, and more.
 
-## 📦 Installation
+## 🚀 Getting Started
 
-```bash
-# Python
-pip install xpander-sdk
+Sign up and log in at https://app.xpander.ai
 
-# Node.js
-npm install @xpander-ai/sdk
+Your account includes a preconfigured "Starter Kit" agent with a few tools and stateful storage to preserve sessions and showcase what’s possible. In Workbench, you can customize the system prompt, switch the model, or download the full agent code to modify and deploy.
 
-# CLI (for agent creation)
-npm install -g xpander-cli
-```
+Workbench screenshot
+![work-bench](images/workbench.png)
 
-### Use xpander-cli to scaffold a new agent template
+Then open Chat at https://chat.xpander.ai → pick the "Starter Kit" agent, add MCP tools, or ask it to run tasks.
+
+This unified Chat is a rich generalist agent that can schedule tasks across all your deployed agents. Anything you add in Workbench shows up here automatically.
+
+Example:
+![generalist-agent](images/generalist-agent.png)
+
+## 🛳️ Build More Agents & Ship to Production
+
+🛠️ Managed Agents (serverless, ~2 min)
+
+- app.xpander.ai → New Agent → Starter Kit (or pick a framework)
+- Add tools from the menu: MCP servers, connectors, built‑in actions, or custom actions
+- Click Deploy → you get a stateful DB, logs, and CI/CD out of the box
+
+<VIDEO>
+
+🔧 Embedded Agents (container, ~3 min)
 
 ```bash
-xpander login
-xpander agent new
+npm install -g xpander-cli && xpander login
+mkdir hello-world && cd hello-world
+xpander agent new --name "hello-world" --framework agno --folder .
+python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+xpander dev   # local run
+xpander deploy && xpander logs
 ```
 
-<img width="1062" alt="image" src="https://github.com/user-attachments/assets/a264fefe-ce22-420a-b105-9cd07b021c3e" />
+Switch anytime
 
-### Prepare virtual env
+- Start Managed. Convert to Embedded by downloading code and redeploying:
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+xpander agent init <agent-id>
+xpander agent deploy
 ```
 
-### Develop the agent and run it
+Where it runs
+
+- xpander cloud or your VPC/Kubernetes (AgentOS) — for both Managed and Embedded
+
+Managed vs Embedded (quick compare)
+
+- Managed: serverless, no infrastructure, auto‑scales; fastest path for internal tools and quick production
+- Embedded: your container and dependencies; full framework/runtime control; ideal for advanced policies, private packages, and GPUs
+
+You can also build new MCP servers with xpander.ai — build once, use everywhere
+
+- Generate from OpenAPI or bring your own
+- Host in xpander cloud or your VPC/Kubernetes
+- Use from agents and any MCP client (e.g., Claude Desktop)
+
+🧩 Works with any framework: Agno, LangChain, PydanticAI, CrewAI — or your own runtime.
+
+## 🔗 How to Use Your Agents
+
+All agents—Managed or Embedded—are instantly available via Chat, Webhook, SDK, A2A, and MCP.
+
+1) 💬 Chat — `chat.<yourdomain>` (or https://chat.xpander.ai)
+
+2) 🌐 Webhook — per‑agent HTTPS endpoint
+
+```bash
+curl --location "https://webhook.xpander.ai?agent_id=$XPANDER_AGENT_ID" \
+  --header 'X-api-key: $XPANDER_API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{"prompt":"Summarize Q3 pipeline risks"}'
 ```
-xpander dev
+
+3) 🧪 SDK
+
+```bash
+pip install "xpander-sdk[agno]"
 ```
 
-<img width="1175" alt="image" src="https://github.com/user-attachments/assets/29d2ea30-f9dd-498f-846a-6ce3cd897150" />
+```env
+# .env
+XPANDER_API_KEY=your_xpander_api_key
+XPANDER_ORGANIZATION_ID=your_org_id
+XPANDER_AGENT_ID=your_agent_id
+```
 
-### Bring your AI agent code and stream events to your agent
-
-Add one line of code to xpander_handler.py and your agent will be accessible via Agent2Agent, Slackbots, MCP servers, or WebUI.
-
-```python xpander.handler.py
-from xpander_sdk import Task, Backend, on_task
+```python
+from xpander_sdk import Backend
 from agno.agent import Agent
 
-# Stateful agent, zero infrastructure overhead
+backend = Backend()  # reads XPANDER_* from .env
+agent = Agent(**backend.get_args())  # DB, MCP tools, system prompt
+
+agent.print_response("What can you help me with?")
+```
+
+4) 🤝 A2A — agent‑to‑agent calls from Chat or the SDK. Schedule tasks across agents with one command.
+
+5) 🧩 MCP — governed connectors available to your agents and any MCP client (e.g., Claude Desktop). Host servers in xpander cloud or your VPC/Kubernetes.
+
+## 🧑‍💻 Customize the Agent Code (optional)
+
+Containerized agents include real code you control. A handler listens for tasks from the control plane and provides a `Task` object so you can choose the framework, tools, and runtime behavior. Not needed for serverless or no‑code agents.
+
+Simply run `xpander agent new` and follow the wizard. It creates an `xpander_handler.py` file and a `Dockerfile`.
+
+Here’s an example of `xpander_handler.py` already configured with Agno.
+
+```python
+from xpander_sdk import Task, on_task, Backend
+from agno.agent import Agent
+
 @on_task
-async def handle_task(task: Task):
-  backend = Backend() # DB, MCP tools, system prompt
-  agent = Agent(**await backend.aget_args())
-
-  # Task includes user data + events from Slack, webhooks, agents
-  result = await agent.arun(message=task.to_message())
-  task.result = result.content
-  return task
+async def handler(task: Task):
+    backend = Backend(configuration=task.configuration)
+    agent = Agent(**backend.get_args(task=task))
+    return await agent.arun(message=task.to_message())
 ```
 
-### Deploy agent to the cloud
+## 📚 Examples
 
-```bash
-xpander deploy  # Will deploy the Docker container to the cloud and run it via the xpander_handler.py file
-xpander logs    # Will stream logs locally from the agent configured locally
-```
+- Local template: `02-agents/local-agent/` — run the agent locally and use Ollama for a private LLM
+- DevOps agent: `02-agents/devops/` — run the agent in the cloud with EKS permissions to troubleshoot logs
+- Travel agent: `02-agents/travel-agent/` — a simple agent that helps with travel
+- Data agent: `02-agents/data-agent/` — demo of building your own front‑end (instead of the xpander.ai Chat UI) with Streamlit
 
-## 🧩 Getting Started Examples
+# Docs & Community
 
-[simple-hello-world](https://docs.xpander.ai/Examples/01-simple-hello-world)
+- Documentation: https://docs.xpander.ai
+- API Reference: https://docs.xpander.ai/api-reference/07-sdk
+- Join our Slack: https://xpander.ai/slack-community
 
-## 📚 Documentation & Resources
+# License
 
-- [Documentation](https://docs.xpander.ai)  
-- [API Reference](https://docs.xpander.ai/api-reference/07-sdk)  
-- [Discord Community](https://discord.gg/CUcp4WWh5g)  
-
-## ⚖️ License
-
-- Open-source runtime: Apache License 2.0
+- Open‑source SDK runtime: Apache 2.0
 - Hosted platform: Commercial (free tier available)
 
 <p align="right">
-    <a href="#readme-top">
-        ↑ Back to Top ↑
-    </a>
+  <a href="#readme-top">↑ Back to Top ↑</a>
 </p>
