@@ -15,7 +15,7 @@
     <font size="7">⚡️ Build, run, and ship agents — any framework, anywhere</font>
   </h3>
   <p>
-    💬 Chat • 🧪 Workbench • 🏗️ AgentOS • 🗄️ DB • 🚦 CI/CD • 🔐 Private • 🧑‍💻 Full code access
+    💬 Chat • 🧪 Workbench • 🏗️ AgentOS • 🗄️ DB • 🚦 CI/CD • 🔐 Self-Hosted • 🧑‍💻 Full code access
   </p>
 </div>
 
