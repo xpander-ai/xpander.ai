@@ -76,10 +76,11 @@ Example:
 - Add tools from the menu: MCP servers, connectors, built‑in actions, or custom actions
 - Click Deploy → you get a stateful DB, logs, and CI/CD out of the box
 
+<p align="center" width="100%">
 <video src="https://github.com/user-attachments/assets/649c5b24-a90e-4dae-9860-c2cf2a5333f6"
-       width="100%" controls>
+       width="80%" controls>
 </video>
-
+</p>
 
 🔧 Embedded Agents (container, ~3 min)
 
