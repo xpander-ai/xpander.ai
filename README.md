@@ -32,7 +32,7 @@
 <div align="center">
   <a href="https://chat.xpander.ai">Chat</a>
   • <a href="https://docs.xpander.ai">Docs</a>
-  • <a href="#examples">Examples</a>
+  • <a href="https://docs.xpander.ai/Examples">Examples</a>
   • <a href="https://xpander.ai">Website</a>
 </div>
 
@@ -76,7 +76,7 @@ Example:
 - Add tools from the menu: MCP servers, connectors, built‑in actions, or custom actions
 - Click Deploy → you get a stateful DB, logs, and CI/CD out of the box
 
-<VIDEO>
+<img width="1587" height="1055" alt="workbench" src="https://github.com/user-attachments/assets/ce7e293f-eb34-48e2-a73b-7c37a67e8203" />
 
 🔧 Embedded Agents (container, ~3 min)
 
