@@ -121,7 +121,7 @@ You can also build new MCP servers with xpander.ai — build once, use everywher
 
 ## 🔗 How to Use Your Agents
 
-All agents—Managed or Embedded—are instantly available via Chat, Webhook, SDK, A2A, and MCP.
+All agents—Managed or Embedded—are instantly available via Chat, Webhook, REST API, SDK, A2A, and MCP.
 
 1) 💬 Chat — `chat.<yourdomain>` (or https://chat.xpander.ai)
 
@@ -134,7 +134,22 @@ curl --location "https://webhook.xpander.ai?agent_id=$XPANDER_AGENT_ID" \
   --data '{"prompt":"Summarize Q3 pipeline risks"}'
 ```
 
-3) 🧪 SDK
+3) 🔌 REST API — unified HTTP access to all agents (Agno, LangChain, PydanticAI, CrewAI, custom frameworks)
+
+Universal control plane at `https://api.xpander.ai` — one API for any framework, any language.
+
+```bash
+curl --location "https://api.xpander.ai/v1/tasks/invoke" \
+  --header 'x-api-key: $XPANDER_API_KEY' \
+  --header 'Content-Type: application/json' \
+  --data '{"agent_id":"$XPANDER_AGENT_ID","prompt":"Summarize Q3 pipeline risks"}'
+```
+
+Manage agents, invoke tasks (sync/async/streaming), handle knowledge bases, and access toolkits — all through standard HTTP.
+
+Full API documentation: https://docs.xpander.ai/api-reference/rest-api
+
+4) 🧪 SDK
 
 ```bash
 pip install "xpander-sdk[agno]"
@@ -157,9 +172,42 @@ agent = Agent(**backend.get_args())  # DB, MCP tools, system prompt
 agent.print_response("What can you help me with?")
 ```
 
-4) 🤝 A2A — agent‑to‑agent calls from Chat or the SDK. Schedule tasks across agents with one command.
+5) 🤝 A2A — agent‑to‑agent calls from Chat or the SDK. Schedule tasks across agents with one command.
 
-5) 🧩 MCP — governed connectors available to your agents and any MCP client (e.g., Claude Desktop). Host servers in xpander cloud or your VPC/Kubernetes.
+6) 🧩 MCP — connect all your agents to Claude Desktop, Cursor, and any MCP client
+
+Use your xpander agents directly in your IDE via the Model Context Protocol:
+
+```json
+{
+  "mcpServers": {
+    "xpander.ai": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote@latest",
+        "https://api.xpander.ai/mcp/",
+        "--header",
+        "x-api-key:YOUR_API_KEY"
+      ]
+    }
+  }
+}
+```
+
+**Available MCP Tools:**
+- List agents — discover all agents in your organization
+- Invoke agent — execute any agent task
+- Create task — queue tasks for agents
+- Get task — retrieve task status and results
+- Get agent threads — access conversation history
+- Get thread messages — retrieve specific thread messages
+
+**MCP Endpoints:**
+- Standard: `https://api.xpander.ai/mcp/`
+- Server-Sent Events (SSE): `https://api.xpander.ai/mcp/sse`
+
+Plus: governed connectors and MCP servers (2,000+ tools) hosted in xpander cloud or your VPC/Kubernetes.
 
 ## 🧑‍💻 Customize the Agent Code (optional)
 
